@@ -1,19 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [
       pkgs.home-manager
     ];
 
-  # Use a custom configuration.nix location.
-  # TODO: Make a git repo called LambdaMachine and point it to its local clone
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
   environment.darwinConfig = "$HOME/LambdaMachine/Darwin/configuration.nix";
 
-  # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nix = {
     package = pkgs.nix;
@@ -25,18 +19,15 @@
     };
   };
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
     gnupg.agent.enable = true;
     zsh = {
       enable = true;
       security.pam.enableSudoTouchIdAuth = true;
     }
-  }
+  };
 
-    # Used for backwards compatibility, please read the changelog before changing.
-    # $ darwin-rebuild changelog
-    system.stateVersion = 4;
+  system.stateVersion = 4;
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
@@ -120,7 +111,7 @@
       };
       trackpad = {
         TrackpadThreeFingerDrag = true;
-      }
+      };
     };
   }
 }
