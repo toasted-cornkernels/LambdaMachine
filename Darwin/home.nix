@@ -3,11 +3,14 @@
 let
   haskellPackages = with haskellPackages; [ ghcup ];
   perl538Packages = with perl538Packages; [ WWWYoutubeViewer ];
+  lua52Packages = with lua52Packages; [ fennel ];
 
-in {
+in rec {
   home.username = "jslee";
-  home.homeDirectory =
-    if lib.stdenv.isDarwin then "/Users/jslee" else "/home/jslee";
+  home.homeDirectory = if lib.stdenv.isDarwin then
+    "/Users/${home.username}"
+  else
+    "/home/${home.username}";
   home.stateVersion = "23.11";
   home.packages = with pkgs;
     [
@@ -43,10 +46,13 @@ in {
       gambit
       gcc
       gd
+      gh
+      git
       git-lfs
       glib
       glibc
       gmp
+      gnumake
       gnupg
       gnutar
       go
@@ -60,6 +66,7 @@ in {
       guile
       harfbuzz
       htop
+      hy
       imagemagick
       isync
       janet
@@ -85,7 +92,7 @@ in {
       moreutils
       mpc-cli
       mpfr
-      mpv
+      mpv-with-scripts
       mu
       mysql
       neomutt
@@ -104,6 +111,7 @@ in {
       pango
       pangolin
       perl
+      picolisp
       pinentry_mac
       pkg-config
       plantuml
@@ -146,7 +154,7 @@ in {
       yt-dlp
       z3
       zip
-    ] ++ haskellPackages ++ perl538Packages;
+    ] ++ haskellPackages ++ perl538Packages ++ lua52Packages;
   # TODO
   home.file = { };
   home.sessionVariables = { EDITOR = "emacs -Q"; };
