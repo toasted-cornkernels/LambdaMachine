@@ -147,8 +147,22 @@ in {
       z3
       zip
     ] ++ haskellPackages ++ perl538Packages;
-  # TODO
-  home.file = { };
-  home.sessionVariables = { EDITOR = "emacs -Q"; };
+  home.file = {
+    # TODO
+    # .zshrc: aarch64-darwin, x86_64-darwin, chromebook, guix
+    # .zshenv: aarch64-darwin, x86_64-darwin, chromebook, guix
+    # .tmux.conf (nix module)
+    # .vimrc
+    # wezterm
+    # ELispMachine (git submodule)
+    # FennelMachine (git submodule)
+    # NeovimConfig (git submodule)
+    # RSS (git submodule)
+  };
+  home.sessionVariables = {
+    EDITOR = "emacs -Q";
+    PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
+    # TODO
+  };
   programs.home-manager.enable = true;
 }
