@@ -154,23 +154,52 @@ in rec {
       yt-dlp
       z3
       zip
-    ] ++ haskellPackages ++ perl538Packages;
+    ] ++ haskellPackages ++ perl538Packages ++ lua52Packages;
   home.file = {
-    # TODO
-    # .zshrc: aarch64-darwin, x86_64-darwin, chromebook, guix
-    # .zshenv: aarch64-darwin, x86_64-darwin, chromebook, guix
-    # .tmux.conf (nix module)
-    # .vimrc
-    # wezterm
-    # ELispMachine (git submodule)
-    # FennelMachine (git submodule)
-    # NeovimConfig (git submodule)
-    # RSS (git submodule)
+    ".hammerspoon" = { # TODO submodule FennelMachine
+      source = "TODO";
+    };
+    "RSS" = { # TODO submodule RSS
+      source = "TODO";
+    };
   };
   home.sessionVariables = {
     EDITOR = "emacs -Q";
     PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
-    # TODO
+    # TODO port over from .zshrc, .zshenv
   };
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager = { enable = true; };
+    tmux = let # TODO port over .zshrc, .zshenv
+      aarch64-darwin-config = 1; # TODO
+      x86_64-darwin-config = 1; # TODO
+      penguin-config = 1; # TODO
+      guix-config = 1; # TODO
+    in {
+      enable = true;
+      # TODO port over .tmux.conf (nix module)
+    };
+    zsh = let # TODO port over .zshrc, .zshenv
+      aarch64-darwin-config = 1; # TODO
+      x86_64-darwin-config = 1; # TODO
+      penguin-config = 1; # TODO
+      guix-config = 1; # TODO
+    in { enable = true; };
+    vim = { # TODO port over .vimrc
+      enable = true;
+    };
+    wezterm = { # TODO port over wezterm.lua
+      enable = true;
+    };
+    emacs = { # TODO submodule ELispMachine
+      enable = true;
+      source = "TODO";
+    };
+    neovim = { # TODO submodule NeovimConfig
+      enable = true;
+    };
+    newsboat = { # TODO submodule RSS
+      enable = true;
+    };
+  };
 }
