@@ -1,22 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages =
-    [
-      pkgs.home-manager
-    ];
-
+  environment.systemPackages = [ pkgs.home-manager ];
   environment.darwinConfig = "$HOME/LambdaMachine/Darwin/configuration.nix";
 
   services.nix-daemon.enable = true;
   nix = {
     package = pkgs.nix;
-    settings = {
-      "extra-experimental-features" = [
-        "nix-command"
-        "flakes"
-      ]
-    };
+    settings = { "extra-experimental-features" = [ "nix-command" "flakes" ]; };
   };
 
   programs = {
@@ -24,30 +15,26 @@
     zsh = {
       enable = true;
       security.pam.enableSudoTouchIdAuth = true;
-    }
+    };
   };
 
   system.stateVersion = 4;
 
   fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
-    monaspace
-    fira-code
-    d2coding
-  ];
+  fonts.fonts = with pkgs; [ monaspace fira-code d2coding ];
 
   homebrew = {
     enable = true;
     brews = [
       {
-        "railwaycat/emacsmacport/emacs-mac";
+        name = "railwaycat/emacsmacport/emacs-mac";
         args = [
           "with-emacs-big-sur-icon"
           "with-imagemagick"
           "with-mac-metal"
           "with-starter"
           "with-xwidgets"
-        ]
+        ];
       }
       "blueutil"
     ];
@@ -77,13 +64,11 @@
       "Dark Reader for Safari" = 1438243180;
       "AdGuard for Safari" = 1440147259;
       "Vimari" = 1480933944;
-    }
+    };
   };
 
   system = {
-    keyboard = {
-      remapCapsLockToControl = true
-    };
+    keyboard = { remapCapsLockToControl = true; };
     defaults = {
       dock = {
         autohide = false;
@@ -96,22 +81,14 @@
         wvous-bl-corner = 1;
         wvous-br-corner = 1;
       };
-      spaces = {
-        spans-displays = false;
-      };
+      spaces = { spans-displays = false; };
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
       };
-      startup = {
-        chime = false;
-      };
-      NSGlobalDomain = {
-        "com.apple.mouse.tapBehavior" = 1;
-      };
-      trackpad = {
-        TrackpadThreeFingerDrag = true;
-      };
+      startup = { chime = false; };
+      NSGlobalDomain = { "com.apple.mouse.tapBehavior" = 1; };
+      trackpad = { TrackpadThreeFingerDrag = true; };
     };
-  }
+  };
 }
