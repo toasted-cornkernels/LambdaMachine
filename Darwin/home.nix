@@ -1,23 +1,25 @@
 { config, pkgs, lib, ... }:
 
 let
-  haskellPackages = with haskellPackages; [ ghcup ];
-  perl538Packages = with perl538Packages; [ WWWYoutubeViewer ];
-  lua52Packages = with lua52Packages; [ fennel ];
-
+  perl538Packages = with pkgs.perl538Packages; [ WWWYoutubeViewer ];
+  lua52Packages = with pkgs.lua52Packages; [ fennel ];
+  x = 1;
 in rec {
-  imports = [
-    ../Common/programs/tmux.nix
-  ];
+  imports = [ ../Common/programs/tmux.nix ];
   home.username = "jslee";
   home.homeDirectory = "/Users/${home.username}";
   home.stateVersion = "23.11";
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
   home.packages = with pkgs;
     [
       abcl
       agda
       alda
-      ammonite
       autoconf
       automake
       babashka
@@ -34,7 +36,7 @@ in rec {
       dafny
       delta
       deno
-      dotnet
+      dotnet-sdk_8
       duf
       ecl
       elixir
@@ -50,7 +52,7 @@ in rec {
       git
       git-lfs
       glib
-      glibc
+      # glibc --> no aarch64
       gmp
       gnumake
       gnupg
@@ -61,7 +63,7 @@ in rec {
       gradle
       graphicsmagick
       graphviz
-      grip
+      # grip --> no aarch64
       gtk3
       guile
       harfbuzz
@@ -70,8 +72,8 @@ in rec {
       imagemagick
       isync
       janet
-      jenv
-      kawa
+      # jenv
+      # kawa
       kotlin
       kotlin-language-server
       krb5
@@ -81,7 +83,7 @@ in rec {
       libass
       libheif
       libtool
-      libvterm
+      # libvterm --> no aarch64
       llvm
       lua-language-server
       luarocks
@@ -91,8 +93,8 @@ in rec {
       mermaid-cli
       moreutils
       mpc-cli
+      mpv
       mpfr
-      mpv-with-scripts
       mu
       mysql
       neomutt
@@ -102,38 +104,38 @@ in rec {
       nim
       ninja
       nodejs
-      nxengine-evo
+      # nxengine-evo --> no darwin
       nyancat
-      obb
+      # obb --> borken
       opam
       opentyrian
       pandoc
       pango
       pangolin
       perl
-      picolisp
+      # picolisp --> borken
       pinentry_mac
       pkg-config
       plantuml
       poppler
       portaudio
       postgresql
-      pygments
+      # pygments
       python310
-      python38
-      python39
+      # python38
+      # python39
       rakudo
       readline
       redis
       ripgrep
       roswell
       ruby
-      rust
-      rustup
+      # rust
+      # rustup
       sbcl
       sbt
       scala
-      scala-cli
+      # scala-cli
       silver-searcher
       smartmontools
       streamlink
@@ -144,35 +146,34 @@ in rec {
       tmux
       tokei
       tree
-      vapoursynth
+      # vapoursynth --> borken
       vim
       w3m
       wget
       xapian
       yarn
-      youtube-viewer
       yt-dlp
       z3
       zip
-    ] ++ haskellPackages ++ perl538Packages ++ lua52Packages;
-  home.file = {
-    "ELispMachine" = { # TODO submodule ELispMachine
-      source = "TODO";
-      recursive = true;
-    };
-    "NeovimConfig" = { # TODO submodule NeovimConfig
-      source = "TODO";
-      recursive = true;
-    };
-    "FennelMachine" = { # TODO submodule FennelMachine
-      source = "TODO";
-      recursive = true;
-    };
-    "RSS" = { # TODO submodule RSS
-      enable = true;
-      recursive = true;
-    };
-  };
+    ] ++ perl538Packages ++ lua52Packages;
+  # home.file = {
+  #   "ELispMachine" = { # TODO submodule ELispMachine
+  #     source = "TODO";
+  #     recursive = true;
+  #   };
+  #   "NeovimConfig" = { # TODO submodule NeovimConfig
+  #     source = "TODO";
+  #     recursive = true;
+  #   };
+  #   "FennelMachine" = { # TODO submodule FennelMachine
+  #     source = "TODO";
+  #     recursive = true;
+  #   };
+  #   #"RSS" = { # TODO submodule RSS
+  #   #  enable = true;
+  #   #  recursive = true;
+  #   #};
+  # };
   home.sessionVariables = {
     EDITOR = "emacs -Q";
     PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
@@ -180,17 +181,17 @@ in rec {
   };
   programs = {
     home-manager = { enable = true; };
-    zsh = let # TODO port over .zshrc, .zshenv
-      aarch64-darwin-config = 1; # TODO
-      x86_64-darwin-config = 1; # TODO
-      penguin-config = 1; # TODO
-      guix-config = 1; # TODO
-    in { enable = true; };
-    vim = { # TODO port over .vimrc
-      enable = true;
-    };
-    wezterm = { # TODO port over wezterm.lua
-      enable = true;
-    };
+    # zsh = let # TODO port over .zshrc, .zshenv
+    #   aarch64-darwin-config = 1; # TODO
+    #   x86_64-darwin-config = 1; # TODO
+    #   penguin-config = 1; # TODO
+    #   guix-config = 1; # TODO
+    # in { enable = true; };
+    # vim = { # TODO port over .vimrc
+    #   enable = true;
+    # };
+    # wezterm = { # TODO port over wezterm.lua
+    #   enable = true;
+    # };
   };
 }

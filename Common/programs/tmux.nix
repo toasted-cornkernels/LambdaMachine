@@ -7,7 +7,7 @@ let
       owner = "jimeh";
       repo = "tmux-themepack";
       rev = "7c59902f64dcd7ea356e891274b21144d1ea5948";
-      sha256 = lib.fakeSha256; # TODO
+      sha256 = "sha256-c5EGBrKcrqHWTKpCEhxYfxPeERFrbTuDfcQhsUAbic4=";
     };
   };
 

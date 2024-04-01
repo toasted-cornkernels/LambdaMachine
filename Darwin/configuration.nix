@@ -14,9 +14,10 @@
     gnupg.agent.enable = true;
     zsh = {
       enable = true;
-      security.pam.enableSudoTouchIdAuth = true;
     };
   };
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -27,20 +28,24 @@
 
   homebrew = {
     enable = true;
+    taps = [
+      "railwaycat/emacsmacport"
+    ];
     brews = [
       {
         name = "railwaycat/emacsmacport/emacs-mac";
         args = [
-          "with-emacs-big-sur-icon"
           "with-imagemagick"
           "with-mac-metal"
           "with-starter"
+          "with-emacs-big-sur-icon"
           "with-xwidgets"
         ];
       }
       "blueutil"
     ];
     casks = [
+    
       "aldente"
       "alfred"
       "appcleaner"
@@ -48,7 +53,7 @@
       "betterdisplay"
       "brave-browser"
       "firefox"
-      "cloudflare-warp"
+      # "cloudflare-warp"
       "hammerspoon"
       "microsoft-auto-update"
       "microsoft-teams"
@@ -90,9 +95,9 @@
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
       };
-      startup = { chime = false; };
       NSGlobalDomain = { "com.apple.mouse.tapBehavior" = 1; };
       trackpad = { TrackpadThreeFingerDrag = true; };
     };
+    startup = { chime = false; };
   };
 }
