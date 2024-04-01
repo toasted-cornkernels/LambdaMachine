@@ -6,11 +6,11 @@ let
   lua52Packages = with lua52Packages; [ fennel ];
 
 in rec {
+  imports = [
+    ../Common/programs/tmux.nix
+  ];
   home.username = "jslee";
-  home.homeDirectory = if lib.stdenv.isDarwin then
-    "/Users/${home.username}"
-  else
-    "/home/${home.username}";
+  home.homeDirectory = "/Users/${home.username}";
   home.stateVersion = "23.11";
   home.packages = with pkgs;
     [
@@ -156,29 +156,30 @@ in rec {
       zip
     ] ++ haskellPackages ++ perl538Packages ++ lua52Packages;
   home.file = {
-    ".hammerspoon" = { # TODO submodule FennelMachine
+    "ELispMachine" = { # TODO submodule ELispMachine
       source = "TODO";
+      recursive = true;
+    };
+    "NeovimConfig" = { # TODO submodule NeovimConfig
+      source = "TODO";
+      recursive = true;
+    };
+    "FennelMachine" = { # TODO submodule FennelMachine
+      source = "TODO";
+      recursive = true;
     };
     "RSS" = { # TODO submodule RSS
-      source = "TODO";
+      enable = true;
+      recursive = true;
     };
   };
   home.sessionVariables = {
     EDITOR = "emacs -Q";
     PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
-    # TODO port over from .zshrc, .zshenv
+    # TODO select and port over from .zshrc, .zshenv
   };
   programs = {
     home-manager = { enable = true; };
-    tmux = let # TODO port over .zshrc, .zshenv
-      aarch64-darwin-config = 1; # TODO
-      x86_64-darwin-config = 1; # TODO
-      penguin-config = 1; # TODO
-      guix-config = 1; # TODO
-    in {
-      enable = true;
-      # TODO port over .tmux.conf (nix module)
-    };
     zsh = let # TODO port over .zshrc, .zshenv
       aarch64-darwin-config = 1; # TODO
       x86_64-darwin-config = 1; # TODO
@@ -189,16 +190,6 @@ in rec {
       enable = true;
     };
     wezterm = { # TODO port over wezterm.lua
-      enable = true;
-    };
-    emacs = { # TODO submodule ELispMachine
-      enable = true;
-      source = "TODO";
-    };
-    neovim = { # TODO submodule NeovimConfig
-      enable = true;
-    };
-    newsboat = { # TODO submodule RSS
       enable = true;
     };
   };

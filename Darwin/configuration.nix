@@ -18,6 +18,8 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   system.stateVersion = 4;
 
   fonts.fontDir.enable = true;
@@ -53,6 +55,8 @@
       "wkhtmltopdf"
       "zoom"
       "wezterm"
+      "steam"
+      "utm"
     ];
     masApps = {
       "Hidden Bar" = 1452453066;
