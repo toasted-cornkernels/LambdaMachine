@@ -5,16 +5,18 @@ let
   lua52Packages = with pkgs.lua52Packages; [ fennel ];
   x = 1;
 in rec {
-  imports = [ ../Common/programs/tmux.nix ];
-  home.username = "jslee";
-  home.homeDirectory = "/Users/${home.username}";
-  home.stateVersion = "23.11";
   nixpkgs = {
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
     };
   };
+
+  imports = [ ../Common/programs/tmux.nix ];
+
+  home.username = "jslee";
+  home.homeDirectory = "/Users/${home.username}";
+  home.stateVersion = "23.11";
   home.packages = with pkgs;
     [
       abcl
