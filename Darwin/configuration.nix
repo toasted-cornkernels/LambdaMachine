@@ -45,7 +45,6 @@
       "blueutil"
     ];
     casks = [
-    
       "aldente"
       "alfred"
       "appcleaner"
