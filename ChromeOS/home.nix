@@ -2,6 +2,11 @@
 
 let lua52Packages = with pkgs.lua52Packages; [ fennel ];
 in rec {
+  nix = {
+    package = pkgs.nix;
+    settings = { "extra-experimental-features" = [ "nix-command" "flakes" ]; };
+  };
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -22,19 +27,22 @@ in rec {
       cmake
       delta
       ecl
-      emacs
+      emacs29
       eza
-      gcc-wrapper
+      gcc
       git
       gnumake
       guile
-      home-manager-path
       hy
       janet
       libtool
       lua
       mpv
+      neovim
+      opam
       picolisp
+      vim
+      zsh
     ] ++ lua52Packages;
 
   home.file = {
