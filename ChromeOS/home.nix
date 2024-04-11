@@ -33,7 +33,7 @@ in rec {
       janet
       libtool
       lua
-      mpv-with-scripts
+      mpv
       picolisp
     ] ++ lua52Packages;
 
