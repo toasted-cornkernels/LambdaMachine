@@ -14,7 +14,11 @@ in rec {
     };
   };
 
-  imports = [ ../Common/programs/tmux.nix ];
+  imports = [
+    ../Common/sessionVariables.nix
+    ../Common/programs/tmux.nix
+    ../Common/programs/zsh.nix
+  ];
 
   home.username = "jslee";
   home.homeDirectory = "/home/${home.username}";
@@ -40,7 +44,7 @@ in rec {
       mpv
       neovim
       nil
-      nixfmt
+      nixfmt-classic
       opam
       opentyrian
       picolisp

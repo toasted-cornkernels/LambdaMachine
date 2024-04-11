@@ -3,8 +3,7 @@
 {
   programs.zsh = {
     enable = true;
-    shellInit = "source ~/.zshenv";
-    interactiveShellInit = ''
+    initExtraFirst = ''
       source ~/.zshenv
 
       # tmux on startup (ssh)
@@ -17,7 +16,8 @@
       if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
           tmux new-session -A -s local
       fi
-
+    '';
+    initExtra = ''
       if [ -e /home/jslee/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jslee/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
       # opam configuration
@@ -54,11 +54,11 @@
       ll = "${pkgs.eza} -l";
 
       vi = "${pkgs.vim}";
-      vim = "${pkgs.nvim}";
-      vs = "${pkgs.nvim} -O";
-      sp = "${pkgs.nvim} -o";
-      fv = "${pkgs.vim} $(sk)";
-      fvi = "${pkgs.vi} $(sk)";
+      vim = "${pkgs.neovim}";
+      vs = "${pkgs.neovim} -O";
+      sp = "${pkgs.neovim} -o";
+      fv = "${pkgs.neovim} $(sk)";
+      fvi = "${pkgs.vim} $(sk)";
 
       emacs = "emacs -nw";
       e = "emacsclient -t";
