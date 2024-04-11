@@ -39,7 +39,10 @@ in rec {
       lua
       mpv
       neovim
+      nil
+      nixfmt
       opam
+      opentyrian
       picolisp
       vim
       zsh
