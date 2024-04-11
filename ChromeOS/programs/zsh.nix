@@ -1,4 +1,4 @@
 { config, pkgs, lib, ... }:
 {
-  # TODO
+  # TODO: port over zshenv
 }

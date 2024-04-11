@@ -48,6 +48,7 @@ in rec {
       opam
       opentyrian
       picolisp
+      skim
       vim
       zsh
     ] ++ lua52Packages;

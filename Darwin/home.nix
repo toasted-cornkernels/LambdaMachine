@@ -137,6 +137,7 @@ in rec {
       sbcl
       sbt
       scala
+      skim
       # scala-cli
       silver-searcher
       smartmontools
