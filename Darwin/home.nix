@@ -3,7 +3,6 @@
 let
   perl538Packages = with pkgs.perl538Packages; [ WWWYoutubeViewer ];
   lua52Packages = with pkgs.lua52Packages; [ fennel ];
-  x = 1;
 in rec {
   nixpkgs = {
     config = {
@@ -19,145 +18,219 @@ in rec {
   home.stateVersion = "23.11";
   home.packages = with pkgs;
     [
+      # glibc --> no aarch64
+      # grip --> no aarch64
+      # jenv
+      # kawa
+      # libvterm --> no aarch64
+      # nxengine-evo --> no darwin
+      # obb --> borken
+      # picolisp --> borken
+      # pygments
+      # python38
+      # python39
+      # rust
+      # rustup
+      # scala-cli
+      # vapoursynth --> borken
       abcl
+      ack
       agda
       alda
+      ammonite-repl
+      asdf
+      aspell
       autoconf
       automake
       babashka
       bat
+      binutils
+      blueutil
       boost
+      cask
+      chezscheme
       chicken
       cloc
       clojure
       clojure-lsp
       cmake
+      cmus
+      commitizen
+      coreutils
       coursier
       crystal
+      cscope
       ctags
       dafny
+      dark-mode-notify  # Darwin only
       delta
       deno
       dotnet-sdk_8
       duf
+      dust
       ecl
+      edencommon
+      editorconfig
       elixir
       eza
+      fb303
+      fbthrift
       fd
       ffmpeg
+      fizz
+      fnlfmt
+      folly
       fswatch
       fzf
       gambit
       gcc
       gd
       gh
+      ghcup
       git
+      git-delta
       git-lfs
       glib
-      # glibc --> no aarch64
       gmp
       gnumake
       gnupg
       gnutar
       go
       gobject-introspection
+      gopls
+      gotop
       gpgme
       gradle
       graphicsmagick
       graphviz
-      # grip --> no aarch64
+      grip
       gtk3
       guile
       harfbuzz
+      howdoi
       htop
+      hunspell
       hy
+      id3lib
+      idris
+      idris2
       imagemagick
       isync
       janet
-      # jenv
-      # kawa
+      jenv
+      kawa
       kotlin
       kotlin-language-server
       krb5
       ktlint
+      latexml
       ledger
       leiningen
+      lfe
       libass
+      libffi
+      libgccjit
       libheif
+      librsvg
       libtool
-      # libvterm --> no aarch64
+      libvterm
       llvm
       lua-language-server
       luarocks
+      lzlib
       m-cli
       matterbridge
       maven
       mermaid-cli
+      minimal-racket
+      mit-scheme
       moreutils
       mpc-cli
-      mpv
       mpfr
+      mpv
       mu
+      mupdf
       mysql
       neomutt
       neovim
       netpbm
+      newlisp
       newsboat
+      nil
       nim
       ninja
+      nixfmt
+      node
       nodejs
-      # nxengine-evo --> no darwin
       nyancat
-      # obb --> borken
+      onefetch
       opam
+      openblas
       opentyrian
+      openvino
       pandoc
       pango
       pangolin
       perl
-      # picolisp --> borken
       pinentry_mac
       pkg-config
       plantuml
       poppler
       portaudio
+      portmidi
       postgresql
-      # pygments
+      powershell
+      pygments
+      python38
+      python39
       python310
-      # python38
-      # python39
+      qemu
+      qt
       rakudo
       readline
       redis
       ripgrep
+      rlwrap
       roswell
       ruby
-      # rust
-      # rustup
+      rust-analyzer
       sbcl
       sbt
       scala
-      skim
-      # scala-cli
+      # sdl12-compat
+      # sdl2_net
+      # sdl_image
+      # sdl_mixer
+      # sdl_ttf
       silver-searcher
+      skim
       smartmontools
+      sonic-pi
       streamlink
+      swiProlog
       terminal-notifier
       tesseract
+      tetris
       texlab
+      the_silver_searcher
       tldr
       tmux
       tokei
       tree
-      # vapoursynth --> borken
+      vapoursynth
       vim
       w3m
+      wangle
+      watchman
       wget
       xapian
       yarn
+      youtube-dl
       yt-dlp
       z3
+      zig
       zip
+      zoxide
     ] ++ perl538Packages ++ lua52Packages;
   # home.file = {
   #   "ELispMachine" = { # TODO submodule ELispMachine
