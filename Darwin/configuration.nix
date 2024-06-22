@@ -20,11 +20,12 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 
   system.stateVersion = 4;
 
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [ monaspace fira-code d2coding ];
+# fonts.fontDir.enable = true;
+# fonts.fonts = with pkgs; [ monaspace fira-code d2coding ];
 
   homebrew = {
     enable = true;
@@ -75,7 +76,7 @@
       "KakaoTalk" = 869223134;
       "Dark Reader for Safari" = 1438243180;
       "AdGuard for Safari" = 1440147259;
-      "Vimari" = 1480933944;
+      # "Vimari" = 1480933944;
     };
   };
 

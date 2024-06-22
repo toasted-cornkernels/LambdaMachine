@@ -1,8 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
-  perl538Packages = with pkgs.perl538Packages; [ WWWYoutubeViewer ];
+  perl538Packages = with pkgs.perl538Packages; [ WWWYoutubeViewer LaTeXML ];
   lua52Packages = with pkgs.lua52Packages; [ fennel ];
+  python312Packages = with pkgs.python312Packages; [ pygments ];
 in rec {
   nixpkgs = {
     config = {
@@ -11,20 +12,28 @@ in rec {
     };
   };
 
-  imports = [ ../Common/programs/tmux.nix ];
+  imports = [
+    ../Common/programs/tmux.nix
+    ../Common/programs/zsh.nix
+    ./programs/zsh.nix
+  ];
 
   home.username = "jslee";
   home.homeDirectory = "/Users/${home.username}";
   home.stateVersion = "23.11";
   home.packages = with pkgs;
     [
+      # binutils
+      # dark-mode-notify  # aarch64 Darwin only
       # glibc --> no aarch64
-      # grip --> no aarch64
+      # grip --> no darwin
       # jenv
       # kawa
-      # libvterm --> no aarch64
+      # libvterm  --> no darwin
+      # mitscheme --> no darwin
       # nxengine-evo --> no darwin
       # obb --> borken
+      # openvino
       # picolisp --> borken
       # pygments
       # python38
@@ -32,23 +41,29 @@ in rec {
       # rust
       # rustup
       # scala-cli
+      # sdl12-compat
+      # sdl2_net
+      # sdl_image
+      # sdl_mixer
+      # sdl_ttf
+      # sonic-pi
       # vapoursynth --> borken
+      # zig
       abcl
       ack
       agda
       alda
-      ammonite-repl
+      ammonite
       asdf
       aspell
       autoconf
       automake
       babashka
       bat
-      binutils
       blueutil
       boost
       cask
-      chezscheme
+      chez
       chicken
       cloc
       clojure
@@ -62,7 +77,6 @@ in rec {
       cscope
       ctags
       dafny
-      dark-mode-notify  # Darwin only
       delta
       deno
       dotnet-sdk_8
@@ -70,7 +84,6 @@ in rec {
       dust
       ecl
       edencommon
-      editorconfig
       elixir
       eza
       fb303
@@ -86,9 +99,7 @@ in rec {
       gcc
       gd
       gh
-      ghcup
       git
-      git-delta
       git-lfs
       glib
       gmp
@@ -103,27 +114,23 @@ in rec {
       gradle
       graphicsmagick
       graphviz
-      grip
       gtk3
       guile
       harfbuzz
-      howdoi
       htop
       hunspell
       hy
       id3lib
       idris
       idris2
+      iina
       imagemagick
       isync
       janet
-      jenv
-      kawa
       kotlin
       kotlin-language-server
       krb5
       ktlint
-      latexml
       ledger
       leiningen
       lfe
@@ -133,7 +140,6 @@ in rec {
       libheif
       librsvg
       libtool
-      libvterm
       llvm
       lua-language-server
       luarocks
@@ -142,32 +148,25 @@ in rec {
       matterbridge
       maven
       mermaid-cli
-      minimal-racket
-      mit-scheme
       moreutils
       mpc-cli
       mpfr
-      mpv
       mu
       mupdf
       mysql
       neomutt
-      neovim
       netpbm
-      newlisp
       newsboat
       nil
       nim
       ninja
-      nixfmt
-      node
+      nixfmt-classic
       nodejs
       nyancat
       onefetch
       opam
       openblas
       opentyrian
-      openvino
       pandoc
       pango
       pangolin
@@ -180,12 +179,9 @@ in rec {
       portmidi
       postgresql
       powershell
-      pygments
-      python38
-      python39
-      python310
+      python312
       qemu
-      qt
+      racket-minimal
       rakudo
       readline
       redis
@@ -197,28 +193,19 @@ in rec {
       sbcl
       sbt
       scala
-      # sdl12-compat
-      # sdl2_net
-      # sdl_image
-      # sdl_mixer
-      # sdl_ttf
+      silver-searcher
       silver-searcher
       skim
       smartmontools
-      sonic-pi
       streamlink
       swiProlog
       terminal-notifier
       tesseract
-      tetris
       texlab
-      the_silver_searcher
       tldr
-      tmux
       tokei
       tree
-      vapoursynth
-      vim
+      vitetris
       w3m
       wangle
       watchman
@@ -228,10 +215,9 @@ in rec {
       youtube-dl
       yt-dlp
       z3
-      zig
       zip
       zoxide
-    ] ++ perl538Packages ++ lua52Packages;
+    ] ++ perl538Packages ++ lua52Packages ++ python312Packages;
   # home.file = {
   #   "ELispMachine" = { # TODO submodule ELispMachine
   #     source = "TODO";
@@ -251,21 +237,15 @@ in rec {
   #   #};
   # };
   home.sessionVariables = {
-    EDITOR = "emacs -Q";
     PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
-    # TODO select and port over from .zshrc, .zshenv
+    CLICOLOR = 1;
   };
   programs = {
     home-manager = { enable = true; };
-    # zsh = let # TODO port over .zshrc, .zshenv
-    #   aarch64-darwin-config = 1; # TODO
-    #   x86_64-darwin-config = 1; # TODO
-    #   penguin-config = 1; # TODO
-    #   guix-config = 1; # TODO
-    # in { enable = true; };
-    # vim = { # TODO port over .vimrc
-    #   enable = true;
-    # };
+    vim = {
+      enable = true;
+      defaultEditor = true;
+    };
     # wezterm = { # TODO port over wezterm.lua
     #   enable = true;
     # };

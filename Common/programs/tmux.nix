@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   tmux-themepack = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "tmux-themepack";
@@ -14,11 +14,15 @@ let
 in {
   programs.tmux = {
     enable = true;
+    mouse = true;
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "screen-256color";
+    prefix = "C-a";
+    keyMode = "vi";
+    baseIndex = 1;
     historyLimit = 100000;
-    plugins = with pkgs; [
-      { plugin = tmuxPlugins.sensible; }
+    plugins = with pkgs.tmuxPlugins; [
+      { plugin = sensible; }
       {
         plugin = tmux-themepack;
         extraConfig = ''
@@ -26,7 +30,7 @@ in {
         '';
       }
       {
-        plugin = tmuxPlugins.resurrect;
+        plugin = resurrect;
         extraConfig = ''
           set -g @resurrect-strategy-vim 'session'
           set -g @resurrect-strategy-nvim 'session'
@@ -34,28 +38,25 @@ in {
         '';
       }
       {
-        plugin = tmuxPlugins.continuum;
+        plugin = continuum;
         extraConfig = ''
           set -g @continuum-restore 'on'
           set -g @continuum-boot 'on'
           set -g @continuum-save-interval '10'
         '';
       }
-      { plugin = tmuxPlugins.better-mouse-mode; }
+      { plugin = better-mouse-mode; }
       {
-        plugin = tmuxPlugins.yank;
+        plugin = yank;
         extraConfig = ''
           set -g @yank_action 'copy-pipe'
         '';
       }
     ];
     extraConfig = ''
-      set-window-option -g mode-keys vi
-
       set -g status off
 
       setw -g monitor-activity on
-      setw -g mouse off
 
       set -stg escape-time 0
       set-option -g renumber-windows on
@@ -65,7 +66,6 @@ in {
       unbind-key C-v
       bind-key C-a send-prefix
       bind-key C-v send-prefix
-      set -g base-index 1
 
       bind-key ";" split-window -h -c "#{pane_current_path}"
       bind-key "\'" split-window -v -c "#{pane_current_path}"
