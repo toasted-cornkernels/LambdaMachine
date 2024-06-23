@@ -14,40 +14,41 @@ let
 in {
   programs.tmux = {
     enable = true;
+    sensibleOnTop = true;
     mouse = true;
+    aggressiveResize = true;
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "screen-256color";
     prefix = "C-a";
     keyMode = "vi";
     baseIndex = 1;
     historyLimit = 100000;
-    plugins = with pkgs.tmuxPlugins; [
-      { plugin = sensible; }
+    plugins = with pkgs; [
+      # {
+      #   plugin = tmux-themepack;
+      #   extraConfig = ''
+      #     set -g @themepack 'powerline/block/cyan'
+      #   '';
+      # }
+      # {
+      #   plugin = tmuxPlugins.resurrect;
+      #   extraConfig = ''
+      #     set -g @resurrect-strategy-vim 'session'
+      #     set -g @resurrect-strategy-nvim 'session'
+      #     set -g @resurrect-capture-pane-contents 'on'
+      #   '';
+      # }
+      # {
+      #   plugin = tmuxPlugins.continuum;
+      #   extraConfig = ''
+      #     set -g @continuum-restore 'on'
+      #     set -g @continuum-boot 'on'
+      #     set -g @continuum-save-interval '10'
+      #   '';
+      # }
+      # { plugin = tmuxPlugins.better-mouse-mode; }
       {
-        plugin = tmux-themepack;
-        extraConfig = ''
-          set -g @themepack 'powerline/block/cyan'
-        '';
-      }
-      {
-        plugin = resurrect;
-        extraConfig = ''
-          set -g @resurrect-strategy-vim 'session'
-          set -g @resurrect-strategy-nvim 'session'
-          set -g @resurrect-capture-pane-contents 'on'
-        '';
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-boot 'on'
-          set -g @continuum-save-interval '10'
-        '';
-      }
-      { plugin = better-mouse-mode; }
-      {
-        plugin = yank;
+        plugin = tmuxPlugins.yank;
         extraConfig = ''
           set -g @yank_action 'copy-pipe'
         '';
@@ -61,18 +62,10 @@ in {
       set -stg escape-time 0
       set-option -g renumber-windows on
 
-      set-option -g prefix C-a
-      unbind-key C-a
-      unbind-key C-v
-      bind-key C-a send-prefix
-      bind-key C-v send-prefix
-
       bind-key ";" split-window -h -c "#{pane_current_path}"
       bind-key "\'" split-window -v -c "#{pane_current_path}"
 
       bind-key "=" select-layout tiled
-
-      bind-key R source-file ~/.tmux.conf \; display-message "tmux.conf reloaded."
 
       set-option -g default-terminal "screen-256color"
 
@@ -143,7 +136,6 @@ in {
       set -g status-interval 1
       set -g status-left-length 30
 
-      set-window-option -g mode-keys vi
 
       set -g visual-activity off
 
