@@ -18,48 +18,52 @@ in {
     mouse = true;
     aggressiveResize = true;
     shell = "${pkgs.zsh}/bin/zsh";
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     prefix = "C-a";
-    keyMode = "vi";
     baseIndex = 1;
     historyLimit = 100000;
+    escapeTime = 0;
+    keyMode = "vi";
     plugins = with pkgs; [
-      # {
-      #   plugin = tmux-themepack;
-      #   extraConfig = ''
-      #     set -g @themepack 'powerline/block/cyan'
-      #   '';
-      # }
-      # {
-      #   plugin = tmuxPlugins.resurrect;
-      #   extraConfig = ''
-      #     set -g @resurrect-strategy-vim 'session'
-      #     set -g @resurrect-strategy-nvim 'session'
-      #     set -g @resurrect-capture-pane-contents 'on'
-      #   '';
-      # }
-      # {
-      #   plugin = tmuxPlugins.continuum;
-      #   extraConfig = ''
-      #     set -g @continuum-restore 'on'
-      #     set -g @continuum-boot 'on'
-      #     set -g @continuum-save-interval '10'
-      #   '';
-      # }
-      # { plugin = tmuxPlugins.better-mouse-mode; }
       {
         plugin = tmuxPlugins.yank;
         extraConfig = ''
           set -g @yank_action 'copy-pipe'
         '';
       }
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = ''
+          set -g @resurrect-strategy-vim 'session'
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '10'
+        '';
+      }
+      {
+        plugin = tmux-themepack;
+        extraConfig = ''
+          source-file "${tmux-themepack}/share/tmux-plugins/tmux-themepack/powerline/block/cyan.tmuxtheme"
+        '';
+      }
+      { plugin = tmuxPlugins.better-mouse-mode; }
     ];
     extraConfig = ''
       set -g status off
 
+      set-option -g prefix C-a
+      unbind-key C-b
+      bind-key C-a send-prefix
+
       setw -g monitor-activity on
 
-      set -stg escape-time 0
       set-option -g renumber-windows on
 
       bind-key ";" split-window -h -c "#{pane_current_path}"
@@ -67,7 +71,8 @@ in {
 
       bind-key "=" select-layout tiled
 
-      set-option -g default-terminal "screen-256color"
+      # Easy config reload
+      bind-key R source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded."
 
       bind-key : command-prompt
       bind-key r refresh-client
@@ -122,21 +127,21 @@ in {
       bind-key ] paste-buffer
 
       bind-key o copy-mode
-      bind-key y paste-buffer
 
       # Setup 'v' to begin selection as in Vim
       bind-key -T edit-mode-vi Up send-keys -X history-up
       bind-key -T edit-mode-vi Down send-keys -X history-down
       unbind-key -T copy-mode-vi Space     ;   bind-key -T copy-mode-vi v send-keys -X begin-selection
-      unbind-key -T copy-mode-vi Enter     ;   bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
       unbind-key -T copy-mode-vi C-v       ;   bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
       unbind-key -T copy-mode-vi [         ;   bind-key -T copy-mode-vi [ send-keys -X begin-selection
       unbind-key -T copy-mode-vi ]         ;   bind-key -T copy-mode-vi ] send-keys -X copy-selection
 
       set -g status-interval 1
+
       set -g status-left-length 30
+      # set-window-option -g mode-keys vi
 
-
+      setw -g monitor-activity on
       set -g visual-activity off
 
       # Enable native Mac OS X copy/paste
