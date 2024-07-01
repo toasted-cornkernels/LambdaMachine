@@ -2,8 +2,7 @@
 
 let
   perl538Packages = with pkgs.perl538Packages; [ WWWYoutubeViewer LaTeXML ];
-  lua52Packages = with pkgs.lua52Packages; [ fennel ];
-  python312Packages = with pkgs.python312Packages; [ pygments ];
+  python312Packages = with pkgs.python312Packages; [ hy pygments ];
 in rec {
   nixpkgs = {
     config = {
@@ -78,6 +77,7 @@ in rec {
       crystal
       cscope
       ctags
+      curl
       dafny
       delta
       deno
@@ -120,7 +120,6 @@ in rec {
       harfbuzz
       htop
       hunspell
-      hy
       id3lib
       idris
       idris2
@@ -143,7 +142,6 @@ in rec {
       libtool
       llvm
       lua-language-server
-      luarocks
       lzlib
       m-cli
       matterbridge
@@ -217,7 +215,32 @@ in rec {
       yt-dlp
       z3
       zip
-    ] ++ perl538Packages ++ lua52Packages ++ python312Packages;
+      (lua5_3_compat.withPackages (ps:
+        with ps; [
+          fennel
+          luafilesystem
+          readline
+          luasocket
+          (lua5_3.pkgs.buildLuarocksPackage {
+            pname = "jeejah";
+            lua = lua5_3;
+            version = "0.3.2-1";
+            knownRockspec = (pkgs.fetchurl {
+              url = "https://luarocks.org/jeejah-0.3.2-1.rockspec";
+              sha256 = "sha256-Ouj+umHFOLtGwwMKochvG1fqIyRMdPzXg9039jD/bPk=";
+            }).outPath;
+            disabled = luaOlder "5.1";
+            src = fetchFromGitLab {
+              owner = "technomancy";
+              repo = "jeejah";
+              rev = "1555350e1e5eb77625334db1fba3c79b8c2c30a2";
+              sha256 = "sha256-DyJJprTj9WjnhCC5CqudObLuae43zJD0VY9svGbqz10=";
+            };
+            propagatedBuildInputs = [ luasocket ];
+            meta = { };
+          })
+        ]))
+    ] ++ perl538Packages ++ python312Packages;
   # home.file = {
   #   "ELispMachine" = { # TODO submodule ELispMachine
   #     source = "TODO";
