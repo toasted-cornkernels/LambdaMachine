@@ -4,11 +4,21 @@
   programs.zsh = {
     enable = true;
     defaultKeymap = "emacs";
-    sessionVariables = {
-      PROMPT="%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
-      CLICOLOR = 1;
+    history = {
+      path = "$HOME/.zsh_history";
+      ignoreDups = true;
+      ignoreAllDups = true;
+      size = 10000;
+      save = 10000;
+      share = true;
+      extended = true;
     };
-
+    enableCompletion = true;
+    completionInit = ''
+      autoload -U compinit && compinit
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+    '';
+    syntaxHighlighting = { enable = true; };
     initExtraFirst = ''
       # tmux on startup (ssh)
       # This should be at the top!
@@ -32,15 +42,19 @@
           _wanted files expl 'local files' _files
       }
 
+      export PROMPT="%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# "
+      export CLICOLOR=1
+
       [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
     '';
     shellAliases = {
-      ytmp3 = ''yt-dlp -ic \
-                       -o "%(playlist_index)s-%(title)s.%(ext)s" \
-                       --yes-playlist \
-                       -x \
-                       --audio-format mp3 \
-                       --audio-quality 0 '';
+      ytmp3 = ''
+        yt-dlp -ic \
+               -o "%(playlist_index)s-%(title)s.%(ext)s" \
+               --yes-playlist \
+               -x \
+               --audio-format mp3 \
+               --audio-quality 0 '';
       mp3 = "iina --no-video --quiet";
       mp32 = "iina --no-video --really-quiet";
       tmuxlocal = "tmux attach -t local";

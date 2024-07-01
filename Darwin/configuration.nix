@@ -62,10 +62,11 @@
       "steam"
       "uhk-agent"
       "utm"
-      "wezterm"
+      "vlc"
       "wkhtmltopdf"
       "zoom"
-      # "cloudflare-warp"
+      "handbrake"
+      "cloudflare-warp"
     ];
     masApps = {
       "Hidden Bar" = 1452453066;
@@ -76,7 +77,6 @@
       "KakaoTalk" = 869223134;
       "Dark Reader for Safari" = 1438243180;
       "AdGuard for Safari" = 1440147259;
-      # "Vimari" = 1480933944;
     };
   };
 

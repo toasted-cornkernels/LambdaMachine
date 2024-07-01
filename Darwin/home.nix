@@ -15,6 +15,8 @@ in rec {
   imports = [
     ../Common/programs/tmux.nix
     ../Common/programs/zsh.nix
+    ../Common/programs/zoxide.nix
+    ../Common/programs/fzf.nix
     ./programs/zsh.nix
   ];
 
@@ -94,7 +96,6 @@ in rec {
       fnlfmt
       folly
       fswatch
-      fzf
       gambit
       gcc
       gd
@@ -216,7 +217,6 @@ in rec {
       yt-dlp
       z3
       zip
-      zoxide
     ] ++ perl538Packages ++ lua52Packages ++ python312Packages;
   # home.file = {
   #   "ELispMachine" = { # TODO submodule ELispMachine
@@ -237,17 +237,16 @@ in rec {
   #   #};
   # };
   home.sessionVariables = {
+    EDITOR = "nvim";
     PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
     CLICOLOR = 1;
+    LC_ALL = "en_US.UTF-8";
+    LANG = "en_US.UTF-8";
+    LANGUAGE = "en_US.UTF-8";
+    TEST = 1;
   };
   programs = {
     home-manager = { enable = true; };
-    vim = {
-      enable = true;
-      defaultEditor = true;
-    };
-    # wezterm = { # TODO port over wezterm.lua
-    #   enable = true;
-    # };
+    vim = { enable = true; };
   };
 }

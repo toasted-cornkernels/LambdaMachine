@@ -71,9 +71,6 @@ in {
 
       bind-key "=" select-layout tiled
 
-      # Easy config reload
-      bind-key R source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded."
-
       bind-key : command-prompt
       bind-key r refresh-client
       bind-key L clear-history
