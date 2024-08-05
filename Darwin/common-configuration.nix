@@ -67,6 +67,10 @@
       "zoom"
       "handbrake"
       "cloudflare-warp"
+      "protonvpn"
+      "proton-pass"
+      "musicbrainz-picard"
+      "xld"
     ];
     masApps = {
       "Hidden Bar" = 1452453066;
