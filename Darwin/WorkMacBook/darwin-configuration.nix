@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   environment.systemPackages = [ pkgs.home-manager ];
-  services.nix-daemon.enable = true;
+  environment.darwinConfig = "$HOME/LambdaMachine/Darwin/WorkMacBook/darwin-configuration.nix";
 
+  services.nix-daemon.enable = true;
   nix = {
     package = pkgs.nix;
     settings = { "extra-experimental-features" = [ "nix-command" "flakes" ]; };
@@ -11,17 +12,35 @@
 
   programs = {
     gnupg.agent.enable = true;
-    zsh = {
-      enable = true;
-    };
+    zsh = { enable = true; };
   };
 
   security.pam.enableSudoTouchIdAuth = true;
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config.allowUnfree = false;
+  nixpkgs.config.allowUnsupportedSystem = false;
 
   system.stateVersion = 4;
+
+  homebrew = {
+    enable = true;
+    taps = [ "railwaycat/emacsmacport" ];
+    brews = [
+      {
+        name = "railwaycat/emacsmacport/emacs-mac";
+        args = [
+          "with-imagemagick"
+          "with-mac-metal"
+          "with-starter"
+          "with-emacs-big-sur-icon"
+          "with-xwidgets"
+        ];
+      }
+      "blueutil"
+    ];
+    casks = [ "hammerspoon" "zoom" ];
+    masApps = { };
+  };
 
   system = {
     keyboard = { remapCapsLockToControl = true; };
