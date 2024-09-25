@@ -22,7 +22,6 @@
     ../../Common/packages/PL/Dafny.nix
     ../../Common/packages/PL/Elixir.nix
     ../../Common/packages/PL/EmacsLisp.nix
-    ../../Common/packages/PL/Fennel.nix
     ../../Common/packages/PL/Go.nix
     ../../Common/packages/PL/Graphviz.nix
     ../../Common/packages/PL/Hy.nix
