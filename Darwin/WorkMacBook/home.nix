@@ -16,6 +16,7 @@ rec {
     ../../Common/packages/PL/Ruby.nix
     ../../Common/packages/PL/Python.nix
     ../../Common/packages/PL/Yaml.nix
+    ../../Common/packages/PL/Lua.nix
     ../../Common/packages/PL/Fennel.nix
 
     ../../Common/packages/Utils/Compress.nix
