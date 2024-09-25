@@ -6,11 +6,11 @@ rec {
   imports = [
     ../common-home.nix
 
-    ../../Common/programs/fzf.nix
-    ../../Common/programs/htop.nix
-    ../../Common/programs/tmux.nix
-    ../../Common/programs/zoxide.nix
-    ../../Common/programs/zsh.nix
+    ../../Common/modules/fzf.nix
+    ../../Common/modules/htop.nix
+    ../../Common/modules/tmux.nix
+    ../../Common/modules/zoxide.nix
+    ../../Common/modules/zsh.nix
 
     ../../Common/packages/PL/Go.nix
     ../../Common/packages/PL/Ruby.nix
