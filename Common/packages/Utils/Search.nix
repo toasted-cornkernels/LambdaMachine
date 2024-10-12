@@ -9,6 +9,7 @@
     silver-searcher
     skim
     tree
+    file-rename
   ];
 }
 

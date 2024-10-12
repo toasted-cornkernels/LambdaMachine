@@ -25,6 +25,7 @@
     casks = [
       "aldente"
       "alfred"
+      "android-file-transfer"
       "appcleaner"
       "balenaetcher"
       "basictex"

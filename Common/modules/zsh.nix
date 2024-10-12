@@ -16,6 +16,7 @@
     enableCompletion = true;
     completionInit = ''
       autoload -U compinit && compinit
+      autoload zmv
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
     '';
     syntaxHighlighting = { enable = true; };
