@@ -35,6 +35,7 @@
       "mpv"
       "slack"
       "uhk-agent"
+      "visual-studio-code"
       "vlc"
       "webex"
       "wkhtmltopdf"
@@ -46,6 +47,10 @@
       "Dark Reader for Safari" = 1438243180;
       "Hidden Bar" = 1452453066;
       "Magnet" = 441258766;
+      "Microsoft Excel" = 462058435;
+      "Microsoft PowerPoint" = 462062816;
+      "Microsoft Word" = 462054704;
+      "iMovie" = 408981434;
     };
   };
 }

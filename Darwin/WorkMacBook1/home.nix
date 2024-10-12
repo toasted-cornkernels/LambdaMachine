@@ -65,6 +65,7 @@ rec {
     ../../Common/packages/Utils/Stats.nix
     ../../Common/packages/Utils/Unix.nix
     ../../Common/packages/Utils/VC.nix
+    ../../Common/packages/Utils/VM.nix
     ../../Common/packages/Utils/Web.nix
 
     ../programs/zsh.nix
@@ -85,9 +86,5 @@ rec {
   #     source = "TODO";
   #     recursive = true;
   #   };
-  #   #"RSS" = { # TODO submodule RSS
-  #   #  enable = true;
-  #   #  recursive = true;
-  #   #};
   # };
 }
