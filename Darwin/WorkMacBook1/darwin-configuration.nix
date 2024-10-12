@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  environment.darwinConfig =
-    "$HOME/LambdaMachine/Darwin/iMac27Intel/darwin-configuration.nix";
+  environment.darwinConfig = "$HOME/LambdaMachine/Darwin/WorkMacBook1/darwin-configuration.nix";
 
   homebrew = {
     enable = true;
@@ -24,30 +23,21 @@
     casks = [
       "aldente"
       "alfred"
-      "android-file-transfer"
       "appcleaner"
-      "balenaetcher"
-      "basictex"
       "betterdisplay"
-      "brave-browser"
-      "cloudflare-warp"
-      "firefox"
+      "drawio"
       "fliqlo"
       "hammerspoon"
-      "handbrake"
       "hhkb-studio"
       "microsoft-auto-update"
       "microsoft-teams"
+      "monodraw"
       "mpv"
-      "musicbrainz-picard"
-      "proton-pass"
-      "protonvpn"
-      "steam"
+      "slack"
       "uhk-agent"
-      "utm"
       "vlc"
+      "webex"
       "wkhtmltopdf"
-      "xld"
       "zoom"
     ];
     masApps = {
@@ -55,10 +45,7 @@
       "Dark Mode Wallpaper Switcher" = 1488154568;
       "Dark Reader for Safari" = 1438243180;
       "Hidden Bar" = 1452453066;
-      "KakaoTalk" = 869223134;
       "Magnet" = 441258766;
-      "Marked 2 - Markdown Preview" = 890031187;
-      "TextSniper - OCR, Copy & Paste" = 1528890965;
     };
   };
 }

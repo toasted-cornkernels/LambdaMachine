@@ -3,7 +3,7 @@
 {
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  environment.darwinConfig = "$HOME/LambdaMachine/Darwin/WorkMacBook/darwin-configuration.nix";
+  environment.darwinConfig = "$HOME/LambdaMachine/Darwin/WorkMacBook2/darwin-configuration.nix";
 
   homebrew = {
     enable = true;
