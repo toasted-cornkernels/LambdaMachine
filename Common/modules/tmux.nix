@@ -54,6 +54,13 @@ in {
         '';
       }
       { plugin = tmuxPlugins.better-mouse-mode; }
+      { plugin = tmuxPlugins.copycat; }
+      {
+        plugin = tmuxPlugins.open;
+        extraConfig = ''
+          set -g @open-S 'https://www.google.com/search?q='
+        '';
+      }
     ];
     extraConfig = ''
       set -g status off
