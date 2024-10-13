@@ -20,18 +20,6 @@
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
     '';
     syntaxHighlighting = { enable = true; };
-    initExtraFirst = ''
-      # tmux on startup (ssh)
-      # This should be at the top!
-      if [[ $- == *i* ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-          tmux attach-session -t ssh || tmux new-session -s ssh
-      fi
-
-      # tmux on startup (local)
-      if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-          tmux new-session -A -s local
-      fi
-    '';
     initExtra = ''
       if [ -e /home/jslee/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jslee/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
