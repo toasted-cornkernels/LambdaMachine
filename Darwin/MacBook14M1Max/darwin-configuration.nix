@@ -19,6 +19,7 @@
           "with-xwidgets"
         ];
       }
+      "mpv"
     ];
     casks = [
       "aldente"
@@ -35,7 +36,6 @@
       "hhkb-studio"
       "microsoft-auto-update"
       "microsoft-teams"
-      "mpv"
       "proton-pass"
       "protonvpn"
       "steam"
@@ -43,7 +43,6 @@
       "utm"
       "vlc"
       "wkhtmltopdf"
-      "xld"
       "zoom"
     ];
     masApps = {
