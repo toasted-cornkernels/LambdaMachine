@@ -1,10 +1,7 @@
-{ config, pkgs, ... }:
-
-let lua52Packages = with pkgs.lua52Packages; [ fennel ];
-in rec {
+{ pkgs, ... }: rec {
   nix = {
     package = pkgs.nix;
-    settings = { "extra-experimental-features" = [ "nix-command" "flakes" ]; };
+    settings = { experimental-features = [ "nix-command" "flakes" ]; };
   };
 
   nixpkgs = {
@@ -15,61 +12,57 @@ in rec {
   };
 
   imports = [
-    ../Common/sessionVariables.nix
-    ../Common/programs/tmux.nix
-    ../Common/programs/zsh.nix
+    ../Common/modules/fzf.nix
+    ../Common/modules/htop.nix
+    ../Common/modules/tmux.nix
+    ../Common/modules/zoxide.nix
+    ../Common/modules/zsh.nix
+
+    ../Common/packages/Fun/Games.nix
+    ../Common/packages/Fun/Stream.nix
+
+    ../Common/packages/PL/C_C++.nix
+    ../Common/packages/PL/Clojure.nix
+    ../Common/packages/PL/CommonLisp.nix
+    ../Common/packages/PL/EmacsLisp.nix
+    ../Common/packages/PL/Hy.nix
+    ../Common/packages/PL/Janet.nix
+    ../Common/packages/PL/JavaScript.nix
+    ../Common/packages/PL/Lua.nix
+    ../Common/packages/PL/OCaml.nix
+    ../Common/packages/PL/Python.nix
+    ../Common/packages/PL/Ruby.nix
+    ../Common/packages/PL/Racket.nix
+    ../Common/packages/PL/Scheme.nix
+    ../Common/packages/PL/Yaml.nix
+
+    ../Common/packages/Utils/Browser.nix
+    ../Common/packages/Utils/Compress.nix
+    ../Common/packages/Utils/Encrypt.nix
+    ../Common/packages/Utils/Financial.nix
+    ../Common/packages/Utils/Search.nix
+    ../Common/packages/Utils/News.nix
+    ../Common/packages/Utils/Spell.nix
+    ../Common/packages/Utils/Stats.nix
+    ../Common/packages/Utils/Unix.nix
+    ../Common/packages/Utils/VC.nix
+    ../Common/packages/Utils/Web.nix
   ];
 
   home.username = "jslee";
   home.homeDirectory = "/home/${home.username}";
   home.stateVersion = "23.11";
-  home.packages = with pkgs;
-    [
-      abcl
-      chicken
-      clojure
-      cmake
-      delta
-      ecl
-      emacs29
-      eza
-      gcc
-      git
-      gnumake
-      guile
-      hy
-      janet
-      libtool
-      lua
-      mpv
-      neovim
-      nil
-      nixfmt-classic
-      opam
-      opentyrian
-      picolisp
-      skim
-      vim
-      zsh
-    ] ++ lua52Packages;
-
-  home.file = {
-    # TODO
-  };
+  home.packages = with pkgs; [ mpv ];
   home.sessionVariables = {
-    EDITOR = "emacs -Q";
+    EDITOR = "nvim";
     PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
+    CLICOLOR = 1;
+    LC_ALL = "en_US.UTF-8";
+    LANG = "en_US.UTF-8";
+    LANGUAGE = "en_US.UTF-8";
   };
   programs = {
     home-manager = { enable = true; };
-    # zsh = let # TODO port over .zshrc, .zshenv
-    #   aarch64-darwin-config = 1; # TODO
-    #   x86_64-darwin-config = 1; # TODO
-    #   penguin-config = 1; # TODO
-    #   guix-config = 1; # TODO
-    # in { enable = true; };
-    # vim = { # TODO port over .vimrc
-    #   enable = true;
-    # };
+    vim = { enable = true; };
   };
 }
