@@ -19,6 +19,7 @@
           "with-xwidgets"
         ];
       }
+      "mpv"
     ];
     casks = [
       "aldente"
@@ -32,7 +33,6 @@
       "microsoft-auto-update"
       "microsoft-teams"
       "monodraw"
-      "mpv"
       "slack"
       "uhk-agent"
       "visual-studio-code"
