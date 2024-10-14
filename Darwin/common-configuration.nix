@@ -29,7 +29,7 @@
       dock = {
         autohide = false;
         orientation = "bottom";
-        mru-spaces = true;
+        mru-spaces = false;
         show-recents = false;
         show-process-indicators = false;
         wvous-tl-corner = 1;
