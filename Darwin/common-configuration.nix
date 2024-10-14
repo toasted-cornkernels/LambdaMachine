@@ -24,7 +24,10 @@
   system.stateVersion = 4;
 
   system = {
-    keyboard = { remapCapsLockToControl = true; };
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
     defaults = {
       dock = {
         autohide = false;
@@ -38,6 +41,10 @@
         wvous-br-corner = 1;
       };
       spaces = { spans-displays = false; };
+      WindowManager = {
+        EnableStandardClickToShowDesktop = false;
+        GloballyEnabled = false;
+      };
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
