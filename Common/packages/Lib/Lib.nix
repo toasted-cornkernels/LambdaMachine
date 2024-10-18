@@ -15,7 +15,7 @@
     id3lib
     libass
     libffi
-    libgccjit
+    # libgccjit
     libheif
     librsvg
     libtool

@@ -4,6 +4,7 @@
    cmake
    gcc
    stdman
+   libclang
  ];
 }
 
