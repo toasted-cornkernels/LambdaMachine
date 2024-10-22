@@ -20,6 +20,7 @@
           "with-xwidgets"
         ];
       }
+      "mpv"
     ];
     casks = [
       "aldente"
@@ -38,7 +39,6 @@
       "hhkb-studio"
       "microsoft-auto-update"
       "microsoft-teams"
-      "mpv"
       "musicbrainz-picard"
       "proton-pass"
       "protonvpn"
