@@ -19,7 +19,6 @@
     ../../Common/packages/PL/Clojure.nix
     ../../Common/packages/PL/CommonLisp.nix
     ../../Common/packages/PL/Crystal.nix
-    ../../Common/packages/PL/Dafny.nix
     ../../Common/packages/PL/Elixir.nix
     ../../Common/packages/PL/EmacsLisp.nix
     ../../Common/packages/PL/Go.nix

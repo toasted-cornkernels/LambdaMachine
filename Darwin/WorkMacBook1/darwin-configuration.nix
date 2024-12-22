@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ../common-configuration.nix ];
@@ -30,8 +30,6 @@
       "fliqlo"
       "hammerspoon"
       "hhkb-studio"
-      "microsoft-auto-update"
-      "microsoft-teams"
       "monodraw"
       "slack"
       "uhk-agent"
@@ -46,7 +44,6 @@
       "Dark Mode Wallpaper Switcher" = 1488154568;
       "Dark Reader for Safari" = 1438243180;
       "Hidden Bar" = 1452453066;
-      "Magnet" = 441258766;
       "Microsoft Excel" = 462058435;
       "Microsoft PowerPoint" = 462062816;
       "Microsoft Word" = 462054704;
