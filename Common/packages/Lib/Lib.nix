@@ -31,5 +31,6 @@
     tesseract
     wangle
     xapian
+    zlib
   ];
 }
