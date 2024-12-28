@@ -9,23 +9,19 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    home-manager-darwin = {
-      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
   };
 
-  outputs = { self, nixpkgs-darwin, nixpkgs-unstable, darwin, home-manager-darwin
+  outputs = { self, nixpkgs-darwin, nixpkgs-unstable, darwin, home-manager
     , ... }@inputs: {
       darwinConfigurations = {
         MacBook14M1Max = darwin.lib.darwinSystem {
-          specialArgs = { inherit inputs; };
           system = "aarch64-darwin";
+          specialArgs = { inherit inputs; };
           modules = [
             ./Darwin/MacBook14M1Max/darwin-configuration.nix
-            home-manager-darwin.darwinModules.home-manager {
+            home-manager.darwinModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jslee =
