@@ -3,6 +3,9 @@
 {
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
+  users.users = {
+    jslee.home = /Users/jslee;
+  };
   environment.darwinConfig =
     "$HOME/LambdaMachine/Darwin/MacBook14M1Max/darwin-configuration.nix";
   homebrew = {
