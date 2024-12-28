@@ -20,7 +20,7 @@
         "type": "github"
       }
     },
-    "home-manager": {
+    "home-manager-darwin": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs-darwin"
@@ -76,7 +76,7 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
-        "home-manager": "home-manager",
+        "home-manager-darwin": "home-manager-darwin",
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
