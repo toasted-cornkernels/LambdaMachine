@@ -8,6 +8,8 @@
   };
   environment.darwinConfig =
     "$HOME/LambdaMachine/Darwin/MacBook14M1Max/darwin-configuration.nix";
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
   homebrew = {
     enable = true;
     taps = [ "railwaycat/emacsmacport" ];
