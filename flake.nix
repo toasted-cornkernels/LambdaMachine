@@ -5,7 +5,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     darwin = {
       url = "github:lnl7/nix-darwin";
-      darwin.inputs.url.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -17,14 +17,14 @@
     };
   };
 
-  outputs = { self, nixpkgs-darwin, nixpkgs-unstable, home-manager-darwin
-    , darwin, ... }@inputs: {
+  outputs = { self, nixpkgs-darwin, nixpkgs-unstable, darwin, home-manager-darwin
+    , ... }@inputs: {
       darwinConfigurations = {
         MacBook14M1Max = darwin.lib.darwinSystem {
           specialArgs = { inherit inputs; };
           system = "aarch64-darwin";
           modules = [
-            ./Darwin/MacBook14M1Max/darwin-configration.nix
+            ./Darwin/MacBook14M1Max/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
               home-manager-darwin.useGlobalPkgs = true;
