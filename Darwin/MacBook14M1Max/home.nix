@@ -1,4 +1,4 @@
-{ ... }: {
+{ ... }: rec {
   imports = [
     ../common-home.nix
 
@@ -71,7 +71,8 @@
   ];
 
   home.username = "jslee";
-  home.homeDirectory = /Users/jslee;
+  home.homeDirectory = /Users/${home.username};
+
   # home.file = {
   #   "ELispMachine" = { # TODO submodule ELispMachine
   #     source = "TODO";
