@@ -25,11 +25,10 @@
           system = "aarch64-darwin";
           modules = [
             ./Darwin/MacBook14M1Max/darwin-configuration.nix
-            home-manager-darwin.darwinModules.home-manager
-            {
-              home-manager-darwin.useGlobalPkgs = true;
-              home-manager-darwin.useUserPkgs = true;
-              home-manager-darwin.users.jslee =
+            home-manager-darwin.darwinModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jslee =
                 import ./Darwin/MacBook14M1Max/home.nix;
             }
           ];
