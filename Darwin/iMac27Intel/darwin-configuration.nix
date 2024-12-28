@@ -1,10 +1,12 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.hostPlatform = "x86_64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  environment.darwinConfig =
-    "$HOME/LambdaMachine/Darwin/iMac27Intel/darwin-configuration.nix";
+  users.users.jslee = {
+    home = /Users/jslee;
+  };
 
   homebrew = {
     enable = true;
@@ -31,7 +33,6 @@
       "basictex"
       "betterdisplay"
       "brave-browser"
-      "cloudflare-warp"
       "firefox"
       "fliqlo"
       "hammerspoon"
