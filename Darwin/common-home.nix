@@ -12,7 +12,6 @@
 
   home.stateVersion = "23.11";
 
-  home.sessionPath = [ "/opt/homebrew/bin" ];
   home.sessionVariables = {
     EDITOR = "nvim";
     PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";

@@ -1,4 +1,6 @@
 { ... }: rec {
+
+  home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
     ../common-home.nix
 
