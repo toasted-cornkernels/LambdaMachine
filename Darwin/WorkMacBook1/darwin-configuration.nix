@@ -28,6 +28,7 @@
       "betterdisplay"
       "drawio"
       "fliqlo"
+      "ghostty"
       "hammerspoon"
       "hhkb-studio"
       "monodraw"

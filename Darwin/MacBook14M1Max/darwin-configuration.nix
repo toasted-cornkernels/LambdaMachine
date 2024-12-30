@@ -35,6 +35,7 @@
       "brave-browser"
       "firefox"
       "fliqlo"
+      "ghostty"
       "hammerspoon"
       "hhkb-studio"
       "microsoft-auto-update"
