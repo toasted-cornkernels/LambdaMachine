@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -59,12 +59,12 @@
       la = "eza -la";
       ll = "eza -l";
 
-      vi = "$HOME/.nix-profile/bin/vim";
-      vim = "$HOME/.nix-profile/bin/nvim";
-      vs = "$HOME/.nix-profile/bin/nvim -O";
-      sp = "$HOME/.nix-profile/bin/nvim -o";
-      fv = "$HOME/.nix-profile/bin/nvim $(sk)";
-      fvi = "$HOME/.nix-profile/bin/vim $(sk)";
+      vi = "${pkgs.vim}/bin/vim";
+      vim = "${pkgs.neovim}/bin/nvim";
+      vs = "${pkgs.neovim}/bin/nvim -O";
+      sp = "${pkgs.neovim}/bin/nvim -o";
+      fv = "${pkgs.neovim}/bin/nvim $(sk)";
+      fvi = "${pkgs.vim}/bin/vim $(sk)";
 
       emacs = "emacs -nw";
       e = "emacsclient -t";
