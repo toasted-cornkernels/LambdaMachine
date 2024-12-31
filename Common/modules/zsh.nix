@@ -43,7 +43,6 @@
           _wanted files expl 'local files' _files
       }
 
-      export PROMPT="%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# "
       export CLICOLOR=1
 
       # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
