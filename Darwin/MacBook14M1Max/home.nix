@@ -76,22 +76,22 @@
   home.username = "jslee";
   home.homeDirectory = /Users/${home.username};
 
-  # home.file = {
-  #   "ELispMachine" = { # TODO submodule ELispMachine
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   "NeovimConfig" = { # TODO submodule NeovimConfig
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   "FennelMachine" = { # TODO submodule FennelMachine
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   #"RSS" = { # TODO submodule RSS
-  #   #  enable = true;
-  #   #  recursive = true;
-  #   #};
-  # };
+  home.file = {
+    ".emacs.d" = {
+      source = ../../ExternalConfigs/ELispMachine;
+      recursive = true;
+    };
+    ".config/nvim" = {
+      source = ../../ExternalConfigs/NeovimConfig;
+      recursive = true;
+    };
+    ".hammerspoon" = {
+      source = ../../ExternalConfigs/FennelMachine;
+      recursive = true;
+    };
+    #"RSS" = { # TODO submodule RSS
+    #  enable = true;
+    #  recursive = true;
+    #};
+  };
 }
