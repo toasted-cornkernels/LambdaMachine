@@ -64,7 +64,7 @@ in {
       }
     ];
     extraConfig = ''
-      set -g status off
+      # set -g status off
 
       set-option -g prefix C-a
       unbind-key C-b
