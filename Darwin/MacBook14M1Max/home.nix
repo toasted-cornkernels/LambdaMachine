@@ -82,10 +82,10 @@ rec {
 
   home.file = {
     ".emacs.d" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/LambdaMachine/ExternalConfigs/ELispMachine";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
     };
     ".hammerspoon" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/LambdaMachine/ExternalConfigs/FennelMachine";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
     };
     #"RSS" = { # TODO submodule RSS
     #  enable = true;

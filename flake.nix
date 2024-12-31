@@ -31,6 +31,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.jslee = import ./Darwin/iMac27Intel/home.nix;
               home-manager.extraSpecialArgs = {
+                inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
               };
             }
@@ -47,6 +48,10 @@
               home-manager.useUserPackages = true;
               home-manager.users.jslee =
                 import ./Darwin/MacBook14M1Max/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                lambdaMachineDir = "LambdaMachine";
+              };
             }
           ];
         };
