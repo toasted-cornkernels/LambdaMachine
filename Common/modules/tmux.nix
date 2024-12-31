@@ -24,6 +24,7 @@ in {
     historyLimit = 100000;
     escapeTime = 0;
     keyMode = "vi";
+    newSession = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.yank;
