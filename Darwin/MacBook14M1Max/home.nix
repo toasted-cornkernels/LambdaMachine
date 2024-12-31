@@ -1,4 +1,4 @@
-{ ... }: rec {
+{ config, ... }: rec {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
@@ -77,21 +77,23 @@
   home.homeDirectory = /Users/${home.username};
 
   home.file = {
-    ".emacs.d" = {
-      source = ../../ExternalConfigs/ELispMachine;
-      recursive = true;
-    };
-    ".config/nvim" = {
-      source = ../../ExternalConfigs/NeovimConfig;
-      recursive = true;
-    };
-    ".hammerspoon" = {
-      source = ../../ExternalConfigs/FennelMachine;
-      recursive = true;
-    };
+    # ".emacs.d" = {
+    #   source = ../../ExternalConfigs/ELispMachine;
+    #   recursive = true;
+    # };
+    # ".hammerspoon" = {
+    #   source = ../../ExternalConfigs/FennelMachine;
+    #   recursive = true;
+    # };
     #"RSS" = { # TODO submodule RSS
     #  enable = true;
     #  recursive = true;
     #};
+  };
+
+  xdg.configFile = {
+    "nvim" = {
+       source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ../../ExternalConfigs/NeovimConfig);
+    };
   };
 }
