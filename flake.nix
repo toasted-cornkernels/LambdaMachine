@@ -20,9 +20,12 @@
   outputs = { self, nixpkgs-darwin, nixpkgs-unstable, darwin
     , home-manager-darwin, ... }@inputs: {
       darwinConfigurations = {
-        iMac27Intel = darwin.lib.darwinSystem {
+        iMac27Intel = darwin.lib.darwinSystem rec {
           system = "x86_64-darwin";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            lambdaMachineDir = "LambdaMachine";
+          };
           modules = [
             ./Darwin/iMac27Intel/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
@@ -30,6 +33,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jslee = import ./Darwin/iMac27Intel/home.nix;
+            }
+            {
+              home-manager-darwin.extraSpecialArgs = specialArgs;
             }
           ];
         };

@@ -1,4 +1,8 @@
-{ config, ... }: rec {
+{ config, lambdaMachineDir, ... }:
+let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
+rec {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
@@ -77,23 +81,24 @@
   home.homeDirectory = /Users/${home.username};
 
   home.file = {
-    # ".emacs.d" = {
-    #   source = ../../ExternalConfigs/ELispMachine;
-    #   recursive = true;
-    # };
-    # ".hammerspoon" = {
-    #   source = ../../ExternalConfigs/FennelMachine;
-    #   recursive = true;
-    # };
+    ".emacs.d" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/LambdaMachine/ExternalConfigs/ELispMachine";
+    };
+    ".hammerspoon" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/LambdaMachine/ExternalConfigs/FennelMachine";
+    };
     #"RSS" = { # TODO submodule RSS
     #  enable = true;
     #  recursive = true;
     #};
   };
 
-  xdg.configFile = {
-    "nvim" = {
-       source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ../../ExternalConfigs/NeovimConfig);
+  xdg = {
+    enable = true;
+    configFile = {
+      nvim = {
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+      };
     };
   };
 }
