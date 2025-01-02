@@ -91,6 +91,9 @@ rec {
     #  enable = true;
     #  recursive = true;
     #};
+    ".vimrc" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+    };
   };
 
   xdg = {
