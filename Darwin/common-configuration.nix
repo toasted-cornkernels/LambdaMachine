@@ -6,7 +6,12 @@
 
   nix = {
     package = pkgs.nix;
-    settings = { "extra-experimental-features" = [ "nix-command" "flakes" ]; };
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
 
   programs = {
@@ -24,12 +29,15 @@
   system.stateVersion = 4;
 
   system = {
-    keyboard = { remapCapsLockToControl = true; };
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
     defaults = {
       dock = {
         autohide = false;
         orientation = "bottom";
-        mru-spaces = true;
+        mru-spaces = false;
         show-recents = false;
         show-process-indicators = false;
         wvous-tl-corner = 1;
@@ -38,6 +46,10 @@
         wvous-br-corner = 1;
       };
       spaces = { spans-displays = false; };
+      WindowManager = {
+        EnableStandardClickToShowDesktop = false;
+        GloballyEnabled = false;
+      };
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;

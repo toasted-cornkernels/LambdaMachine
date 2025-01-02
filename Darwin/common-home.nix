@@ -14,7 +14,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    PROMPT = "%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# ";
     CLICOLOR = 1;
     LC_ALL = "en_US.UTF-8";
     LANG = "en_US.UTF-8";

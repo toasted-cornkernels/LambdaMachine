@@ -6,5 +6,6 @@
     nyancat
     rlwrap
     watchman
+    neovim
   ];
 }

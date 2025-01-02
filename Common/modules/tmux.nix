@@ -24,6 +24,7 @@ in {
     historyLimit = 100000;
     escapeTime = 0;
     keyMode = "vi";
+    newSession = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.yank;
@@ -63,7 +64,7 @@ in {
       }
     ];
     extraConfig = ''
-      set -g status off
+      # set -g status off
 
       set-option -g prefix C-a
       unbind-key C-b

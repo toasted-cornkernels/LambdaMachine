@@ -1,9 +1,12 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.hostPlatform = "aarch64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  environment.darwinConfig = "$HOME/LambdaMachine/Darwin/WorkMacBook1/darwin-configuration.nix";
+  users.users.jslee = {
+    home = /Users/jslee;
+  };
 
   homebrew = {
     enable = true;
@@ -24,19 +27,25 @@
     casks = [
       "aldente"
       "alfred"
+      "android-file-transfer"
       "appcleaner"
+      "balenaetcher"
+      "basictex"
       "betterdisplay"
-      "drawio"
+      "brave-browser"
+      "firefox"
       "fliqlo"
       "ghostty"
       "hammerspoon"
       "hhkb-studio"
-      "monodraw"
-      "slack"
+      "microsoft-auto-update"
+      "microsoft-teams"
+      "proton-pass"
+      "protonvpn"
+      "steam"
       "uhk-agent"
-      "visual-studio-code"
+      "utm"
       "vlc"
-      "webex"
       "wkhtmltopdf"
       "zoom"
     ];
@@ -45,10 +54,10 @@
       "Dark Mode Wallpaper Switcher" = 1488154568;
       "Dark Reader for Safari" = 1438243180;
       "Hidden Bar" = 1452453066;
-      "Microsoft Excel" = 462058435;
-      "Microsoft PowerPoint" = 462062816;
-      "Microsoft Word" = 462054704;
-      "iMovie" = 408981434;
+      "KakaoTalk" = 869223134;
+      "Magnet" = 441258766;
+      "Marked 2 - Markdown Preview" = 890031187;
+      "TextSniper - OCR, Copy & Paste" = 1528890965;
     };
   };
 }

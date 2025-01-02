@@ -7,7 +7,9 @@
         luafilesystem
         readline
         luasocket
+	luarocks
       ]))
+    stylua
   ];
 }
 

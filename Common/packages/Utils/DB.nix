@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    mysql
+    mariadb
     postgresql
     redis
   ];

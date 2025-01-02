@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -20,6 +20,18 @@
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
     '';
     syntaxHighlighting = { enable = true; };
+    initExtraFirst = ''
+      # tmux on startup (ssh)
+      # This should be at the top!
+      if [[ $- == *i* ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+          tmux attach-session -t ssh || tmux new-session -s ssh
+      fi
+
+      # tmux on startup (local)
+      if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+          tmux new-session -A -s local
+      fi
+    '';
     initExtra = ''
       if [ -e /home/jslee/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jslee/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -31,10 +43,9 @@
           _wanted files expl 'local files' _files
       }
 
-      export PROMPT="%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# "
       export CLICOLOR=1
 
-      [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+      # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
     '';
     shellAliases = {
       ytmp3 = ''
@@ -59,12 +70,12 @@
       la = "eza -la";
       ll = "eza -l";
 
-      vi = "$HOME/.nix-profile/bin/vim";
-      vim = "$HOME/.nix-profile/bin/nvim";
-      vs = "$HOME/.nix-profile/bin/nvim -O";
-      sp = "$HOME/.nix-profile/bin/nvim -o";
-      fv = "$HOME/.nix-profile/bin/nvim $(sk)";
-      fvi = "$HOME/.nix-profile/bin/vim $(sk)";
+      vi = "${pkgs.vim}/bin/vim";
+      vim = "${pkgs.neovim}/bin/nvim";
+      vs = "${pkgs.neovim}/bin/nvim -O";
+      sp = "${pkgs.neovim}/bin/nvim -o";
+      fv = "${pkgs.neovim}/bin/nvim $(sk)";
+      fvi = "${pkgs.vim}/bin/vim $(sk)";
 
       emacs = "emacs -nw";
       e = "emacsclient -t";
