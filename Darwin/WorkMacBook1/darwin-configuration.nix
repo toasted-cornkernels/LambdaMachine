@@ -30,6 +30,8 @@
       "fliqlo"
       "hammerspoon"
       "hhkb-studio"
+      "microsoft-auto-update"
+      "microsoft-teams"
       "monodraw"
       "slack"
       "uhk-agent"
