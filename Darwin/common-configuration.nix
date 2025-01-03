@@ -6,7 +6,12 @@
 
   nix = {
     package = pkgs.nix;
-    settings = { "extra-experimental-features" = [ "nix-command" "flakes" ]; };
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
 
   programs = {

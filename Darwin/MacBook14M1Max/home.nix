@@ -1,4 +1,10 @@
-{ ... }: rec {
+{ config, lambdaMachineDir, ... }:
+let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
+rec {
+
+  home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
     ../common-home.nix
 
@@ -7,6 +13,7 @@
     ../../Common/modules/tmux.nix
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
+    ../../Common/modules/starship.nix
 
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
@@ -19,7 +26,6 @@
     ../../Common/packages/PL/Clojure.nix
     ../../Common/packages/PL/CommonLisp.nix
     ../../Common/packages/PL/Crystal.nix
-    ../../Common/packages/PL/Dafny.nix
     ../../Common/packages/PL/Elixir.nix
     ../../Common/packages/PL/EmacsLisp.nix
     ../../Common/packages/PL/Go.nix
@@ -44,7 +50,6 @@
     ../../Common/packages/PL/Scala.nix
     ../../Common/packages/PL/Scheme.nix
     ../../Common/packages/PL/TeX.nix
-    ../../Common/packages/PL/VimScript.nix
     ../../Common/packages/PL/Yaml.nix
     ../../Common/packages/PL/Z3.nix
 
@@ -73,23 +78,30 @@
   ];
 
   home.username = "jslee";
-  home.homeDirectory = "/Users/${home.username}";
-  # home.file = {
-  #   "ELispMachine" = { # TODO submodule ELispMachine
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   "NeovimConfig" = { # TODO submodule NeovimConfig
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   "FennelMachine" = { # TODO submodule FennelMachine
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   #"RSS" = { # TODO submodule RSS
-  #   #  enable = true;
-  #   #  recursive = true;
-  #   #};
-  # };
+  home.homeDirectory = /Users/${home.username};
+
+  home.file = {
+    ".emacs.d" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
+    };
+    ".hammerspoon" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
+    };
+    #"RSS" = { # TODO submodule RSS
+    #  enable = true;
+    #  recursive = true;
+    #};
+    ".vimrc" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+    };
+  };
+
+  xdg = {
+    enable = true;
+    configFile = {
+      nvim = {
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+      };
+    };
+  };
 }

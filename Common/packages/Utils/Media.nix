@@ -6,7 +6,6 @@
     graphicsmagick
     iina
     imagemagick
-    mpc-cli
     mupdf
     pandoc
     portaudio

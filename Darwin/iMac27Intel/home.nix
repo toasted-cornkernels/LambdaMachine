@@ -1,4 +1,6 @@
 { ... }: rec {
+  
+  home.sessionPath = [ "/usr/local/bin" ];
   imports = [
     ../common-home.nix
 
@@ -19,7 +21,6 @@
     ../../Common/packages/PL/Clojure.nix
     ../../Common/packages/PL/CommonLisp.nix
     ../../Common/packages/PL/Crystal.nix
-    ../../Common/packages/PL/Dafny.nix
     ../../Common/packages/PL/Elixir.nix
     ../../Common/packages/PL/EmacsLisp.nix
     ../../Common/packages/PL/Go.nix
@@ -44,7 +45,6 @@
     ../../Common/packages/PL/Scala.nix
     ../../Common/packages/PL/Scheme.nix
     ../../Common/packages/PL/TeX.nix
-    ../../Common/packages/PL/VimScript.nix
     ../../Common/packages/PL/Yaml.nix
     ../../Common/packages/PL/Z3.nix
 
@@ -73,7 +73,7 @@
   ];
 
   home.username = "jslee";
-  home.homeDirectory = "/Users/${home.username}";
+  home.homeDirectory = /Users/${home.username};
   # home.file = {
   #   "ELispMachine" = { # TODO submodule ELispMachine
   #     source = "TODO";

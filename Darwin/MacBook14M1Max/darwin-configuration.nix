@@ -1,10 +1,13 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.hostPlatform = "aarch64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  environment.darwinConfig =
-    "$HOME/LambdaMachine/Darwin/MacBook14M1Max/darwin-configuration.nix";
+  users.users.jslee = {
+    home = /Users/jslee;
+  };
+
   homebrew = {
     enable = true;
     taps = [ "railwaycat/emacsmacport" ];
@@ -19,6 +22,7 @@
           "with-xwidgets"
         ];
       }
+      "mpv"
     ];
     casks = [
       "aldente"
@@ -31,11 +35,11 @@
       "brave-browser"
       "firefox"
       "fliqlo"
+      "ghostty"
       "hammerspoon"
       "hhkb-studio"
       "microsoft-auto-update"
       "microsoft-teams"
-      "mpv"
       "proton-pass"
       "protonvpn"
       "steam"
@@ -43,7 +47,6 @@
       "utm"
       "vlc"
       "wkhtmltopdf"
-      "xld"
       "zoom"
     ];
     masApps = {
