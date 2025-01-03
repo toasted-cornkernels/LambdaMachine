@@ -81,6 +81,13 @@
             }
           ];
         };
+        CheapChromeBook = home-manager.lib.homeManagerConfiguration {
+          configuration = ./ChromeOS/home.nix;
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          homeDirectory = "/home/jslee";
+          username = "jslee";
+        };
       };
     };
 }

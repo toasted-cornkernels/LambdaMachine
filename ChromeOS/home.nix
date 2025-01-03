@@ -1,4 +1,8 @@
-{ pkgs, ... }: rec {
+{ config, lambdaMachineDir,... }: 
+let inherit (config.lib.file) mkOutOfStoreSymlink;
+in
+
+rec {
   nix = {
     package = pkgs.nix;
     settings = { experimental-features = [ "nix-command" "flakes" ]; };
@@ -12,11 +16,14 @@
   };
 
   imports = [
+    
+
     ../Common/modules/fzf.nix
     ../Common/modules/htop.nix
     ../Common/modules/tmux.nix
     ../Common/modules/zoxide.nix
     ../Common/modules/zsh.nix
+    ../../Common/modules/starship.nix
 
     ../Common/packages/Fun/Games.nix
     ../Common/packages/Fun/Stream.nix
@@ -48,6 +55,8 @@
     ../Common/packages/Utils/Unix.nix
     ../Common/packages/Utils/VC.nix
     ../Common/packages/Utils/Web.nix
+
+    ../programs/zsh.nix
   ];
 
   home.username = "jslee";
