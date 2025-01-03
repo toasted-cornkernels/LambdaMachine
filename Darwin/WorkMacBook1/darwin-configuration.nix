@@ -1,9 +1,12 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.hostPlatform = "aarch64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  environment.darwinConfig = "$HOME/LambdaMachine/Darwin/WorkMacBook1/darwin-configuration.nix";
+  users.users.jslee = {
+    home = /Users/jslee;
+  };
 
   homebrew = {
     enable = true;
