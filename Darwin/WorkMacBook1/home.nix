@@ -3,8 +3,8 @@ let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 rec {
- 
-  home.sessionPath = [ "opt/homebrew/bin" ];
+
+  home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
     ../common-home.nix
 
@@ -13,6 +13,7 @@ rec {
     ../../Common/modules/tmux.nix
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
+    ../../Common/modules/starship.nix
 
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
@@ -72,8 +73,7 @@ rec {
   ];
 
   home.username = "jslee";
-  home.homeDirectory = "/Users/${home.username}";
-
+  home.homeDirectory = /Users/${home.username};
 
   home.file = {
     ".emacs.d" = {
