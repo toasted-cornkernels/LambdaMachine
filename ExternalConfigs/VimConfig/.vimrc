@@ -38,37 +38,38 @@ Plug 'sbdchd/neoformat'
 
 Plug 'farmergreg/vim-lastplace'
 
-Plug 'vimpostor/vim-lumen'
-
 Plug 'vimpostor/vim-prism'
 
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!']  }
 
 call plug#end()
 
-" force encoding as UTF-8
+" Force encoding to UTF-8.
 scriptencoding utf-8
 set encoding=utf-8
 set fileencoding=utf-8
 set nocompatible
 set hidden
-set clipboard^=unnamed,unnamedplus
+set clipboard^=unnamedplus
+set mouse=a
 
-" Visuals!
-set t_Co=256
-" colorscheme seoul256
+" Visuals
+syntax on
 let g:airline_theme='jellybeans'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+colorscheme prism
 set fillchars=eob:\ ,vert:\│
-set shm+=I  " disables startup message
+set shortmess+=I
 
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=none
+highlight SignColumn guibg=NONE
+
+" Different cursor shapes in Insert mode and Normal mode.
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-colorscheme prism
-
-" map <Space> <Leader>
 let mapleader = "\<Space>"
 let maplocalleader = ","
 map <leader>[ :tabprev<cr>
@@ -80,7 +81,6 @@ map <leader>fs :w<cr>
 map <leader>ff :FZF<cr>
 map <leader>fr :History<cr>
 map <leader>ee :vert term<cr>
-map <leader>ef :FloatermNew<cr>
 map <leader>wv :vs<cr>
 map <leader>ws :sp<cr>
 map <leader>sc :noh<cr>
@@ -102,7 +102,7 @@ map <leader>bp :bp<cr>
 map <leader>bn :bn<cr>
 map <leader>bd :bw<cr>
 map <leader>bb :buffers<cr>
-map <leader>b= :Format<cr>
+map <leader>b= :NeoFormat<cr>
 map <leader>cdc :lcd %:p:h<cr>
 map <leader>cdt :lcd
 map <leader>w= <C-w>=
@@ -113,13 +113,10 @@ map <leader>cC :make<cr>
 map <leader>ga :Git add .<cr>
 map <leader>gc :Git commit<cr>
 map <leader>gpu :Git push<cr>
-map <leader>Tp :colorscheme seoul256<cr>
-map <leader>Tn :colorscheme seoul256-light<cr>
 map <localleader>sl :SlimeSendCurrentLine<cr>
 map <localleader>se :SlimeSend<cr>
 map <leader><leader> :
 map <leader><TAB> <C-^>
-map <leader><C-f> :Neoformat<cr>:w<cr>
 map <leader><C-r> :e<cr>
 
 nnoremap ZA :wqa!<cr>
@@ -133,28 +130,12 @@ nnoremap <C-l> zz
 " FZF config
 let g:fzf_history_dir = 1
 
-" Neoformat config
-let g:neoformat_enabled_python = ['black']
-
 " Spacemacs style window switching
 let i = 1
 while i <= 9
     execute 'nnoremap <Leader>' . i . ' :' . i . 'wincmd w<CR>'
     let i = i + 1
 endwhile
-
-if exists('g:loaded_sensible') || &compatible
-    finish
-else
-    let g:loaded_sensible = 'yes'
-endif
-
-if has('autocmd')
-    filetype plugin indent on
-endif
-if has('syntax') && !exists('g:syntax_on')
-    syntax enable
-endif
 
 " vim-sexp config
 " let g:sexp_filetypes = "clojure,scheme,lisp,timl,hy,fennel"
@@ -182,6 +163,11 @@ set nrformats-=octal
 set guioptions=
 set splitright
 set splitbelow
+
+set noswapfile
+set nobackup
+set nowritebackup
+set noundofile
 
 " No annoying sound on errors
 set novisualbell
@@ -215,13 +201,11 @@ set smartcase
 
 " <tab> inserts four <space>s
 set smartindent
-set tabstop=4
+set tabstop=2
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 
-set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
-
-" "Aliases" for commonly used commands+lazy shift finger:
+" Aliases for commonly used commands+lazy shift finger:
 command! -bar -nargs=* -complete=file -range=% -bang W         <line1>,<line2>write<bang> <args>
 command! -bar -nargs=* -complete=file -range=% -bang Write     <line1>,<line2>write<bang> <args>
 command! -bar -nargs=* -complete=file -range=% -bang Wq        <line1>,<line2>wq<bang> <args>
@@ -245,12 +229,8 @@ command! -bar -nargs=* -complete=dir           -bang Cd        cd<bang> <args>
 command! -bar                                        Messages  messages
 command! -bar -nargs=+ -complete=file          -bang Source    source<bang> <args>
 
-if !&scrolloff
-    set scrolloff=1
-endif
-if !&sidescrolloff
-    set sidescrolloff=5
-endif
+set scrolloff=1
+set sidescrolloff=5
 set display+=lastline
 
 if &listchars ==# 'eol:$'
@@ -278,29 +258,4 @@ endif
 
 set sessionoptions-=options
 
-" Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
-    set t_Co=16
-endif
-
 inoremap <C-U> <C-G>u<C-U>
-
-set noswapfile
-set nobackup
-set nowritebackup
-set noundofile
-
-" Transparent!
-hi NonText ctermbg=none
-hi Normal guibg=NONE ctermbg=NONE
-highlight SignColumn guibg=NONE
-
-function SetupOCaml()
-    setlocal shiftwidth=2 tabstop=2
-    map <leader>cC :!dune build<cr>
-endfunction
-
-autocmd FileType ocaml call SetupOCaml()
-autocmd FileType lisp setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
-
