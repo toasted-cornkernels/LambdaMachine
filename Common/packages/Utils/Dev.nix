@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     autoconf
     automake
+    cmake
     cscope
     ctags
     gnumake

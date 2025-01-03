@@ -35,10 +35,11 @@
     ../Common/packages/PL/Racket.nix
     ../Common/packages/PL/Scheme.nix
     ../Common/packages/PL/Yaml.nix
+    ../Common/packages/PL/Nix.nix
 
     ../Common/packages/Utils/Browser.nix
     ../Common/packages/Utils/Compress.nix
-    ../Common/packages/Utils/Encrypt.nix
+    ../Common/packages/Utils/Dev.nix
     ../Common/packages/Utils/Financial.nix
     ../Common/packages/Utils/Search.nix
     ../Common/packages/Utils/News.nix
@@ -52,7 +53,10 @@
   home.username = "jslee";
   home.homeDirectory = "/home/${home.username}";
   home.stateVersion = "23.11";
-  home.packages = with pkgs; [ mpv ];
+  home.packages = with pkgs; [
+    mpv
+    emacs29
+  ];
   home.sessionVariables = {
     EDITOR = "nvim";
     CLICOLOR = 1;

@@ -65,6 +65,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jslee = import ./Darwin/WorkMacBook1/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                lambdaMachineDir = "LambdaMachine";
+              };
             }
           ];
         };
@@ -78,6 +82,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jslee = import ./Darwin/WorkMacBook2/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                lambdaMachineDir = "LambdaMachine";
+              };
             }
           ];
         };
