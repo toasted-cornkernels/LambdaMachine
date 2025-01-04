@@ -1,4 +1,4 @@
-{ config, lambdaMachineDir,... }: 
+{ pkgs, config, lambdaMachineDir,... }: 
 let
  inherit (config.lib.file) mkOutOfStoreSymlink;
 in rec {
