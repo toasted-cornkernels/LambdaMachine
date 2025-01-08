@@ -4,5 +4,6 @@
     ruby
     pry
     ruby-lsp
+    rubyPackages.rails
   ];
 }
