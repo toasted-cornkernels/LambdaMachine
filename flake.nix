@@ -2,25 +2,25 @@
   description = "LambdaMachine";
   inputs = {
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    darwin = {
+    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-darwin = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
-    home-manager-unstable = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
-  outputs = { self, nixpkgs-darwin, nixpkgs-unstable, darwin
-    , home-manager-darwin, ... }@inputs: {
+  outputs = { self, nixpkgs-darwin, nixpkgs, nix-darwin
+    , home-manager-darwin, home-manager, ... }@inputs: {
       darwinConfigurations = {
-        iMac27Intel = darwin.lib.darwinSystem {
+        iMac27Intel = nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
@@ -37,7 +37,7 @@
             }
           ];
         };
-        MacBook14M1Max = darwin.lib.darwinSystem {
+        MacBook14M1Max = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
@@ -55,7 +55,7 @@
             }
           ];
         };
-        WorkMacBook1 = darwin.lib.darwinSystem {
+        WorkMacBook1 = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
@@ -72,7 +72,7 @@
             }
           ];
         };
-        WorkMacBook2 = darwin.lib.darwinSystem {
+        WorkMacBook2 = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
@@ -89,12 +89,17 @@
             }
           ];
         };
+      };
+      homeConfigurations = {
         CheapChromeBook = home-manager.lib.homeManagerConfiguration {
-          configuration = ./ChromeOS/home.nix;
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          homeDirectory = "/home/jslee";
-          username = "jslee";
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          modules = [
+            ./ChromeOS/home.nix
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+            lambdaMachineDir = "LambdaMachine";
+          };
         };
       };
     };
