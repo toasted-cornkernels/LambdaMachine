@@ -22,7 +22,7 @@ in {
     prefix = "C-a";
     baseIndex = 1;
     historyLimit = 100000;
-    escapeTime = 0;
+    escapeTime = 10;
     keyMode = "vi";
     newSession = true;
     plugins = with pkgs; [
