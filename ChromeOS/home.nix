@@ -1,7 +1,8 @@
 { pkgs, config, lambdaMachineDir,... }: 
 let
- inherit (config.lib.file) mkOutOfStoreSymlink;
-in rec {
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
+rec {
   nix = {
     package = pkgs.nix;
     settings = { experimental-features = [ "nix-command" "flakes" ]; };
@@ -56,22 +57,41 @@ in rec {
     ./programs/zsh.nix
   ];
 
-  home.username = "jslee";
-  home.homeDirectory = "/home/${home.username}";
-  home.stateVersion = "23.11";
   home.packages = with pkgs; [
     mpv
     emacs29
   ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
     CLICOLOR = 1;
     LC_ALL = "en_US.UTF-8";
     LANG = "en_US.UTF-8";
     LANGUAGE = "en_US.UTF-8";
+
+  home.username = "jslee";
+  home.homeDirectory = "/home/${home.username}";
+  home.stateVersion = "23.11";
+
+  home.file = {
+    ".emacs.d" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
+    };
+    ".vimrc" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+    };
   };
+
+  xdg = {
+    enable = true;
+    configFile = {
+      nvim = {
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+      };
+    };
+  };
+
   programs = {
     home-manager = { enable = true; };
-    vim = { enable = true; };
   };
 }
