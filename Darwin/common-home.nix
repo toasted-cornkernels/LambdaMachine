@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   nixpkgs = {
@@ -19,8 +19,10 @@
     LANG = "en_US.UTF-8";
     LANGUAGE = "en_US.UTF-8";
   };
-  programs = {
-    home-manager = { enable = true; };
-    vim = { enable = true; };
+
+  programs = { home-manager = { enable = true; }; };
+
+  fonts = {
+    fontconfig.enable = true;
   };
 }
