@@ -1,8 +1,6 @@
-{ pkgs, config, lambdaMachineDir,... }: 
-let
-  inherit (config.lib.file) mkOutOfStoreSymlink;
-in
-rec {
+{ pkgs, config, lambdaMachineDir, ... }:
+let inherit (config.lib.file) mkOutOfStoreSymlink;
+in rec {
   nix = {
     package = pkgs.nix;
     settings = { experimental-features = [ "nix-command" "flakes" ]; };
@@ -57,10 +55,7 @@ rec {
     ./programs/zsh.nix
   ];
 
-  home.packages = with pkgs; [
-    mpv
-    emacs29
-  ];
+  home.packages = with pkgs; [ mpv emacs29 ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -76,10 +71,12 @@ rec {
 
   home.file = {
     ".emacs.d" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
+      source = mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
     };
     ".vimrc" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+      source = mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
     };
   };
 
@@ -87,24 +84,40 @@ rec {
     enable = true;
     configFile = {
       nvim = {
-        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+        source = mkOutOfStoreSymlink
+          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
     };
     desktopEntries = {
       Emacs = {
         name = "Emacs";
         genericName = "Text Editor";
-        comment = "Edit Text";
+        comment = "Edit text";
         icon = ../ExternalConfigs/assets/CrostiniEmacs.png;
-        exec = "${pkgs.emacs29}";
+        exec = "${pkgs.emacs29}/bin/emacs";
         terminal = false;
-        mimeType = ["text/plain"];
-        categories = ["Development" "TextEditor"];
+        mimeType = [
+          "text/plain"
+          "text/english"
+          "text/plain"
+          "text/x-makefile"
+          "text/x-c++hdr"
+          "text/x-c++src"
+          "text/x-chdr"
+          "text/x-csrc"
+          "text/x-java"
+          "text/x-moc"
+          "text/x-pascal"
+          "text/x-tcl"
+          "text/x-tex"
+          "application/x-shellscript"
+          "text/x-c"
+          "text/x-c++"
+        ];
+        categories = [ "Development" "TextEditor" ];
       };
     };
   };
 
-  programs = {
-    home-manager = { enable = true; };
-  };
+  programs = { home-manager = { enable = true; }; };
 }
