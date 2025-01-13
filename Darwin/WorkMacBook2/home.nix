@@ -1,8 +1,10 @@
-{ pkgs, ... }:
-
+{ config, lambdaMachineDir, ... }:
+let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
 rec {
-  nixpkgs = { config = { allowUnfree = false; }; };
 
+  home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
     ../common-home.nix
 
@@ -11,6 +13,7 @@ rec {
     ../../Common/modules/tmux.nix
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
+    ../../Common/modules/starship.nix
 
     ../../Common/packages/PL/Go.nix
     ../../Common/packages/PL/Ruby.nix
@@ -32,23 +35,26 @@ rec {
   ];
 
   home.username = "jslee";
-  home.homeDirectory = "/Users/${home.username}";
-    # home.file = {
-  #   "ELispMachine" = { # TODO submodule ELispMachine
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   "NeovimConfig" = { # TODO submodule NeovimConfig
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   "FennelMachine" = { # TODO submodule FennelMachine
-  #     source = "TODO";
-  #     recursive = true;
-  #   };
-  #   #"RSS" = { # TODO submodule RSS
-  #   #  enable = true;
-  #   #  recursive = true;
-  #   #};
-  # };
+  home.homeDirectory = /Users/${home.username};
+
+  home.file = {
+    ".emacs.d" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
+    };
+    ".hammerspoon" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
+    };
+    ".vimrc" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+    };
+  };
+
+  xdg = {
+    enable = true;
+    configFile = {
+      nvim = {
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+      };
+    };
+  };
 }
