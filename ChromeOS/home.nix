@@ -90,6 +90,18 @@ rec {
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
     };
+    desktopEntries = {
+      Emacs = {
+        name = "Emacs";
+        genericName = "Text Editor";
+        comment = "Edit Text";
+        icon = ../ExternalConfigs/assets/CrostiniEmacs.png;
+        exec = "${pkgs.emacs29}";
+        terminal = false;
+        mimeType = ["text/plain"];
+        categories = ["Development" "TextEditor"];
+      };
+    };
   };
 
   programs = {
