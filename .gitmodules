@@ -1,9 +1,9 @@
 [submodule "ExternalConfigs/ELispMachine"]
 	path = ExternalConfigs/ELispMachine
-	url = https://github.com/toasted-cornkernels/ELispMachine.git
+	url = ../ELispMachine.git
 [submodule "ExternalConfigs/NeovimConfig"]
 	path = ExternalConfigs/NeovimConfig
-	url = https://github.com/toasted-cornkernels/NeovimConfig.git
+	url = ../NeovimConfig.git
 [submodule "ExternalConfigs/FennelMachine"]
 	path = ExternalConfigs/FennelMachine
-	url = https://github.com/toasted-cornkernels/FennelMachine.git
+	url = ../FennelMachine.git
