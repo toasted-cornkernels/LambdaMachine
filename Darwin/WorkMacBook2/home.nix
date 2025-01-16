@@ -36,7 +36,7 @@ rec {
   ];
 
   home.username = username;
-  home.homeDirectory = /Users/${home.username};
+  home.homeDirectory = /Users/${username};
 
   home.file = {
     ".emacs.d" = {
