@@ -4,8 +4,8 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  users.users.jslee = {
-    home = /Users/jslee;
+  users.users."${username}" = {
+    home = /Users/${username};
   };
 
   homebrew = {
