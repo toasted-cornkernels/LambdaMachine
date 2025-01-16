@@ -92,7 +92,10 @@
         };
         WorkMacBook21 = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            username = "jlee4054";
+          };
           modules = [
             ./Darwin/WorkMacBook2/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
