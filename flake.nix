@@ -85,6 +85,25 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
+                username = "jslee";
+              };
+            }
+          ];
+        };
+        WorkMacBook21 = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./Darwin/WorkMacBook2/darwin-configuration.nix
+            home-manager-darwin.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jlee4054 = import ./Darwin/WorkMacBook2/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                lambdaMachineDir = "LambdaMachine";
+                username = "jlee4054";
               };
             }
           ];

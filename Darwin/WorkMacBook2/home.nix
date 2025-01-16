@@ -1,4 +1,4 @@
-{ config, lambdaMachineDir, ... }:
+{ config, lambdaMachineDir, username, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
@@ -35,7 +35,7 @@ rec {
     ../programs/zsh.nix
   ];
 
-  home.username = "jslee";
+  home.username = username;
   home.homeDirectory = /Users/${home.username};
 
   home.file = {
