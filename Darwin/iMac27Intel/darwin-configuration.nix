@@ -35,6 +35,7 @@
       "brave-browser"
       "firefox"
       "fliqlo"
+      "ghostty"
       "hammerspoon"
       "handbrake"
       "hhkb-studio"

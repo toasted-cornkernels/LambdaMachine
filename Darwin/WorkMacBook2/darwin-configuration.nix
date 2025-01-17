@@ -24,8 +24,11 @@
       }
     ];
     casks = [
-      "hammerspoon"
       "alfred"
+      "fliqlo"
+      "ghostty"
+      "hammerspoon"
+      "visual-studio-code"
     ];
     masApps = { };
   };
