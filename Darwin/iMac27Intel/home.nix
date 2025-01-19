@@ -58,6 +58,7 @@ rec {
     ../../Common/packages/Utils/Compress.nix
     ../../Common/packages/Utils/DB.nix
     ../../Common/packages/Utils/Dev.nix
+    ../../Common/packages/Utils/Edit.nix
     ../../Common/packages/Utils/Encrypt.nix
     ../../Common/packages/Utils/Financial.nix
     ../../Common/packages/Utils/Fonts.nix
