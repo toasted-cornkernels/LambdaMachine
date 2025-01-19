@@ -4,5 +4,5 @@
     vim
     neovim
     nano
-  ]
+  ];
 }
