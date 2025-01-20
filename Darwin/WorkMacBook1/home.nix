@@ -1,4 +1,4 @@
-{ config, lambdaMachineDir, ... }:
+{ pkgs, config, lambdaMachineDir, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
@@ -87,6 +87,10 @@ rec {
     ".vimrc" = {
       source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
     };
+    ".gnupg/gpg-agent.conf".text = ''
+      enable-ssh-support
+      pinentry-program ${pkgs.pinentry_mac}
+    '';
   };
 
   xdg = {
