@@ -89,7 +89,7 @@ rec {
     };
     ".gnupg/gpg-agent.conf".text = ''
       enable-ssh-support
-      pinentry-program ${pkgs.pinentry_mac}
+      pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
     '';
   };
 
