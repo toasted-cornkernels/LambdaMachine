@@ -23,6 +23,7 @@ rec {
 
     ../../Common/packages/Utils/Compress.nix
     ../../Common/packages/Utils/Dev.nix
+    ../../Common/packages/Utils/Edit.nix
     ../../Common/packages/Utils/Fonts.nix
     ../../Common/packages/Utils/Mac.nix
     ../../Common/packages/Utils/Search.nix

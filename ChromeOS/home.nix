@@ -43,7 +43,9 @@ in rec {
     ../Common/packages/Utils/Browser.nix
     ../Common/packages/Utils/Compress.nix
     ../Common/packages/Utils/Dev.nix
+    ../Common/packages/Utils/Edit.nix
     ../Common/packages/Utils/Financial.nix
+    ../Common/packages/Utils/Fonts.nix
     ../Common/packages/Utils/Search.nix
     ../Common/packages/Utils/News.nix
     ../Common/packages/Utils/Spell.nix

@@ -1,8 +1,6 @@
-{ config, lambdaMachineDir, ... }:
-let
-  inherit (config.lib.file) mkOutOfStoreSymlink;
-in
-rec {
+{ pkgs, config, lambdaMachineDir, ... }:
+let inherit (config.lib.file) mkOutOfStoreSymlink;
+in rec {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
@@ -58,6 +56,7 @@ rec {
     ../../Common/packages/Utils/Compress.nix
     ../../Common/packages/Utils/DB.nix
     ../../Common/packages/Utils/Dev.nix
+    ../../Common/packages/Utils/Edit.nix
     ../../Common/packages/Utils/Encrypt.nix
     ../../Common/packages/Utils/Financial.nix
     ../../Common/packages/Utils/Fonts.nix
@@ -83,25 +82,33 @@ rec {
 
   home.file = {
     ".emacs.d" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
+      source = mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
     };
     ".hammerspoon" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
+      source = mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
     };
     #"RSS" = { # TODO submodule RSS
     #  enable = true;
     #  recursive = true;
     #};
     ".vimrc" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+      source = mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
     };
+    ".gnupg/gpg-agent.conf".text = ''
+      enable-ssh-support
+      pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
+    '';
   };
 
   xdg = {
     enable = true;
     configFile = {
       nvim = {
-        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+        source = mkOutOfStoreSymlink
+          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
     };
   };
