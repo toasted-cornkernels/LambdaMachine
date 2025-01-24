@@ -95,7 +95,7 @@ in rec {
     #};
     ".vimrc" = {
       source = mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
     };
     ".gnupg/gpg-agent.conf".text = ''
       enable-ssh-support
@@ -109,6 +109,10 @@ in rec {
       nvim = {
         source = mkOutOfStoreSymlink
           "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+      };
+      ghostty = {
+        source = mkOutOfStoreSymlink
+          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty/config";
       };
     };
   };
