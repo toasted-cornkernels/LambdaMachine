@@ -7,3 +7,6 @@
 [submodule "ExternalConfigs/FennelMachine"]
 	path = ExternalConfigs/FennelMachine
 	url = ../FennelMachine.git
+[submodule "ExternalConfigs/dots"]
+	path = ExternalConfigs/dots
+	url = ../dots.git
