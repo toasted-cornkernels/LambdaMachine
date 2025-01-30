@@ -108,6 +108,10 @@ rec {
       nvim = {
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
+      ghostty = {
+        source = mkOutOfStoreSymlink
+          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
+      };
     };
   };
 }
