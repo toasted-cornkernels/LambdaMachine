@@ -1,0 +1,22 @@
+fullscreen = true
+
+theme = "Harper"
+
+font-size = 20
+font-family = D2Coding ligature
+
+window-inherit-font-size = false
+
+macos-titlebar-style = hidden
+
+mouse-hide-while-typing = true
+
+shell-integration-features = no-cursor
+
+cursor-style = block
+cursor-style-blink = false
+cursor-invert-fg-bg = true
+
+keybind=cmd+t=new_tab
+
+confirm-close-surface = false

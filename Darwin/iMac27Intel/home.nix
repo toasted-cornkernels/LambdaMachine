@@ -112,7 +112,7 @@ in rec {
       };
       ghostty = {
         source = mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty/config";
+          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
       };
     };
   };
