@@ -21,6 +21,13 @@
     experimental-features = nix-command flakes
   '';
 
+  home-manager = {
+    config = import ./home.nix;
+    extraSpecialArgs = {
+      lambdaMachineDir = "LambdaMachine";
+    };
+  };
+
   time.timeZone = "America/Los_Angeles";
 }
 

@@ -1,8 +1,6 @@
-{ pkgs, config, ... }:
-let
-  inherit (config.lib.file) mkOutOfStoreSymlink;
-in
-{
+{ pkgs, config, lambdaMachineDir, ... }:
+let inherit (config.lib.file) mkOutOfStoreSymlink;
+in rec {
   imports = [
     ../../Common/modules/fzf.nix
     ../../Common/modules/htop.nix
@@ -19,20 +17,9 @@ in
     ".emacs.d" = {
       source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
     };
-    ".hammerspoon" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
-    };
-    #"RSS" = { # TODO submodule RSS
-    #  enable = true;
-    #  recursive = true;
-    #};
     ".vimrc" = {
       source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
     };
-    ".gnupg/gpg-agent.conf".text = ''
-      enable-ssh-support
-      pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
-    '';
   };
 
   xdg = {
@@ -42,5 +29,5 @@ in
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
     };
-  }
-};
+  };
+}
