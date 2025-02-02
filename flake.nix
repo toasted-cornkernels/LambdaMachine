@@ -15,10 +15,15 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = { self, nixpkgs-darwin, nixpkgs, nix-darwin, home-manager-darwin
-    , home-manager, ... }@inputs: {
+    , home-manager, nix-on-droid, ... }@inputs: {
       darwinConfigurations = {
         iMac27Intel = nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
@@ -114,6 +119,12 @@
               };
             }
           ];
+        };
+      };
+      nixOnDroidConfigurations = {
+        ZFold6 = nix-on-droid.lib.nixOnDroidConfiguration {
+          pkgs = import nixpkgs { system = "aarch64-linux"; };
+          modules = [ ./Android/configuration.nix ];
         };
       };
       homeConfigurations = {
