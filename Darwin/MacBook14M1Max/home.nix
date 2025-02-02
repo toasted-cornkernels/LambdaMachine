@@ -94,7 +94,7 @@ rec {
     #  recursive = true;
     #};
     ".vimrc" = {
-      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/VimConfig/.vimrc";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
     };
     ".gnupg/gpg-agent.conf".text = ''
       enable-ssh-support
