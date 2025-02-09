@@ -4,7 +4,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      format = "[  ](bg:#a3aed2 fg:#1d2230)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)$git_branch[](fg:#394260 bg:#212736)$nodejs$rust$golang[](fg:#212736 bg:#1d2230)$time[ ](fg:#1d2230)";
+      format = "$nix_shell$directory[](fg:#769ff0 bg:#394260)$git_branch[](fg:#394260 bg:#212736)$nodejs$rust$golang[](fg:#212736 bg:#1d2230)$time[ ](fg:#1d2230)";
       character = {
         format = "$symbol";
         error_symbol = "[ ](bold fg:red bg:#19172C)";
@@ -12,7 +12,7 @@
       };
 
       directory = {
-        format = "[   $path ](fg:#2D2B40 bg:#769ff0)(fg:#2D2B40)";
+        format = "[   $path ](fg:#2D2B40 bg:#769ff0)";
         truncation_length = 3;
         truncation_symbol = "…/";
         substitutions = {
@@ -47,7 +47,7 @@
 
       jobs = {
         symbol = " 󰠜 ";
-        style = "(fg:#769ff0 bg:#394260)";
+        style = "[[ $symbol ](fg:#769ff0 bg:#394260)]";
       };
 
       time = {
@@ -63,7 +63,11 @@
       };
 
       nix_shell = {
-        format = " [❄ $state( \($name\))](bold blue)";
+        disabled = false;
+        heuristic = true;
+        symbol = "❄";
+        format = "[ $symbol $state( \($name\))](bg:#a3aed2 fg:#1d2230)[](fg:#a3aed2 bg:#769ff0)";
+        # format = "(bg:#a3aed2 fg:#1d2230)$nix_shell";
       };
     };
   };
