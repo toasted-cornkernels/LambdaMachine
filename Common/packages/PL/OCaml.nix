@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     ocaml
+    opam # TEMP
     dune_3
     ocamlPackages.ocaml-lsp
     ocamlPackages.core
