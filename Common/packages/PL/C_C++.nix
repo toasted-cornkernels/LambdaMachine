@@ -2,9 +2,9 @@
 {
   home.packages = with pkgs; [
    cmake
-   gcc
+   # gcc
    stdman
-   libclang
+   # libclang
  ];
 }
 
