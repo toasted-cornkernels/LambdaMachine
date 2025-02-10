@@ -5,5 +5,6 @@
     # rustup
     rustfmt
     rust-analyzer
+    cargo
   ];
 }
