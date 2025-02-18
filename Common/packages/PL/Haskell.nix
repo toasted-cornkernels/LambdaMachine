@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    stack # TEMP
-    ghcup # TEMP
+    haskellPackages.stack # TEMP
+    haskellPackages.cabal-install # TEMP
+    # haskellPackages.ghcup # TEMP
   ];
 }

@@ -28,6 +28,7 @@ in rec {
     ../../Common/packages/PL/EmacsLisp.nix
     ../../Common/packages/PL/Go.nix
     ../../Common/packages/PL/Graphviz.nix
+    ../../Common/packages/PL/Haskell.nix
     ../../Common/packages/PL/Hy.nix
     ../../Common/packages/PL/Idris.nix
     ../../Common/packages/PL/Janet.nix

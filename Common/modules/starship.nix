@@ -67,8 +67,14 @@
         heuristic = true;
         symbol = "❄";
         format = "[ $symbol $state( \($name\))](bg:#a3aed2 fg:#1d2230)[](fg:#a3aed2 bg:#769ff0)";
-        # format = "(bg:#a3aed2 fg:#1d2230)$nix_shell";
       };
+
+      # nix_shell_legacy = {
+      #   disabled = false;
+      #   heuristic = false;
+      #   symbol = "❄";
+      #   format = "[ $symbol $state( \($name\))](bg:#a3aed2 fg:#1d2230)[](fg:#a3aed2 bg:#769ff0)";
+      # };
     };
   };
 }
