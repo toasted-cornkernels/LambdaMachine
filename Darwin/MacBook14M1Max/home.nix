@@ -14,6 +14,7 @@ rec {
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
     ../../Common/modules/starship.nix
+    ../../Common/modules/newsboat.nix
 
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
