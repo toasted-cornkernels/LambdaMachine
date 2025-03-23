@@ -25,7 +25,6 @@
       "mpv"
     ];
     casks = [
-      "aldente"
       "alfred"
       "android-file-transfer"
       "appcleaner"
@@ -33,24 +32,22 @@
       "basictex"
       "betterdisplay"
       "brave-browser"
+      "crossover"
       "firefox"
       "fliqlo"
       "ghostty"
       "hammerspoon"
       "handbrake"
       "hhkb-studio"
-      "microsoft-auto-update"
-      "microsoft-teams"
       "musicbrainz-picard"
       "proton-pass"
       "protonvpn"
-      "steam"
+      "syncthing"
       "uhk-agent"
       "utm"
       "vlc"
       "wkhtmltopdf"
       "xld"
-      "zoom"
     ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
@@ -58,7 +55,6 @@
       "Dark Reader for Safari" = 1438243180;
       "Hidden Bar" = 1452453066;
       "KakaoTalk" = 869223134;
-      "Magnet" = 441258766;
       "Marked 2 - Markdown Preview" = 890031187;
       "TextSniper - OCR, Copy & Paste" = 1528890965;
     };

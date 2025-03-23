@@ -25,7 +25,6 @@
       "mpv"
     ];
     casks = [
-      "aldente"
       "alfred"
       "android-file-transfer"
       "appcleaner"
@@ -33,21 +32,19 @@
       "basictex"
       "betterdisplay"
       "brave-browser"
+      "crossover"
       "firefox"
       "fliqlo"
       "ghostty"
       "hammerspoon"
       "hhkb-studio"
-      "microsoft-auto-update"
-      "microsoft-teams"
       "proton-pass"
       "protonvpn"
-      "steam"
+      "syncthing"
       "uhk-agent"
       "utm"
       "vlc"
       "wkhtmltopdf"
-      "zoom"
     ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
