@@ -4,7 +4,6 @@
     cmus
     ffmpeg
     graphicsmagick
-    iina
     imagemagick
     mupdf
     pandoc
