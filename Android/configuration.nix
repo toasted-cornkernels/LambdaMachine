@@ -22,12 +22,12 @@
   '';
 
   home-manager = {
-    config = import ./home.nix;
+    config = ./home.nix;
     extraSpecialArgs = {
       lambdaMachineDir = "LambdaMachine";
     };
   };
 
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/New_York";
 }
 

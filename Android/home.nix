@@ -1,6 +1,8 @@
 { pkgs, config, lambdaMachineDir, userName, userHomeDir, ... }:
-let inherit (config.lib.file) mkOutOfStoreSymlink;
-in rec {
+let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
+rec {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -15,6 +17,8 @@ in rec {
     ../Common/modules/zoxide.nix
     ../Common/modules/zsh.nix
     ../Common/modules/starship.nix
+
+    ../Common/packages/Utils/Unix.nix
   ];
 
   home.stateVersion = "23.11";
