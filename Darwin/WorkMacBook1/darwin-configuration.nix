@@ -37,7 +37,6 @@
       "microsoft-auto-update"
       "microsoft-teams"
       "monodraw"
-      "slack"
       "uhk-agent"
       "visual-studio-code"
       "vlc"
