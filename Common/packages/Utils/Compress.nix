@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     gnutar
-    zip
+    gzip
   ];
 }
 

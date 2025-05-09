@@ -10,6 +10,7 @@
     skim
     tree
     file-rename
+    gnugrep
   ];
 }
 

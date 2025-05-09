@@ -7,5 +7,6 @@
     nyancat
     rlwrap
     watchman
+    ps
   ];
 }
