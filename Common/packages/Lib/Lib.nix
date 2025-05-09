@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    boost
+    # boost
     coreutils
     coursier
     edencommon

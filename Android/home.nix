@@ -17,6 +17,39 @@ rec {
     ../Common/modules/zoxide.nix
     ../Common/modules/zsh.nix
     ../Common/modules/starship.nix
+    ../Common/modules/newsboat.nix
+
+    ../Common/packages/Fun/Games.nix
+    ../Common/packages/Fun/Stream.nix
+
+    ../Common/packages/Lib/Lib.nix
+
+    ../Common/packages/PL/CSharp.nix
+    ../Common/packages/PL/C_C++.nix
+    ../Common/packages/PL/Clojure.nix
+    ../Common/packages/PL/CommonLisp.nix
+    ../Common/packages/PL/EmacsLisp.nix
+    ../Common/packages/PL/Go.nix
+    ../Common/packages/PL/Graphviz.nix
+    # ../Common/packages/PL/Haskell.nix
+    ../Common/packages/PL/Hy.nix
+    ../Common/packages/PL/Janet.nix
+    ../Common/packages/PL/JavaScript.nix
+    # ../Common/packages/PL/LFE.nix
+    ../Common/packages/PL/Lua.nix
+    # ../Common/packages/PL/Mermaid.nix
+    # ../Common/packages/PL/Nim.nix
+    ../Common/packages/PL/Nix.nix
+    # ../Common/packages/PL/OCaml.nix
+    ../Common/packages/PL/Perl.nix
+    # ../Common/packages/PL/Prolog.nix
+    ../Common/packages/PL/Python.nix
+    ../Common/packages/PL/Racket.nix
+    ../Common/packages/PL/Ruby.nix
+    ../Common/packages/PL/Rust.nix
+    # ../Common/packages/PL/Scala.nix
+    ../Common/packages/PL/Scheme.nix
+    ../Common/packages/PL/Yaml.nix
 
     ../Common/packages/Utils/Browser.nix
     ../Common/packages/Utils/Chat.nix

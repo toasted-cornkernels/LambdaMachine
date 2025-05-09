@@ -11,10 +11,13 @@
 
   environment.packages = with pkgs; [
     vim
-    git
+    emacs
+    # git
     wget
     curl
     openssh
+    gcc
+    gawk
     home-manager
   ];
 
