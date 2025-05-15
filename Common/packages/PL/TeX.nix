@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    texliveBasic
+    (texliveBasic.withPackages (ps: [ ps.texliveonfly ]))
     texlab
-    texlivePackages.texliveonfly
   ];
 }
 
