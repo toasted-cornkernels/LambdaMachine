@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     rustc
-    # rustup
+    rustup
     rustfmt
     rust-analyzer
     cargo

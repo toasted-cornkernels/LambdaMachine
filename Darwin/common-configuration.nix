@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.home-manager ];
+  environment = {
+    systemPackages = [ pkgs.home-manager ];
+    systemPath = [ "%u/.cargo/bin" ];
+  };
   services.nix-daemon.enable = true;
 
   nix = {

@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     # deno
-    nodejs
+    nodejs_20
     yarn
     corepack
     typescript
