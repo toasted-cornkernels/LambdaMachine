@@ -103,6 +103,10 @@ in rec {
       enable-ssh-support
       pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
     '';
+    ".w3m/keymap" = {
+      source = mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.w3m/keymap";
+    };
   };
 
   xdg = {
