@@ -5,7 +5,6 @@
     systemPackages = [ pkgs.home-manager ];
     systemPath = [ "%u/.cargo/bin" ];
   };
-  services.nix-daemon.enable = true;
 
   nix = {
     package = pkgs.nix;
@@ -24,14 +23,14 @@
     };
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
 
-  system.stateVersion = 4;
-
   system = {
+    stateVersion = 4;
+    primaryUser = "jslee";
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToControl = true;
