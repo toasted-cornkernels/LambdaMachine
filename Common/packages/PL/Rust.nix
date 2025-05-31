@@ -2,9 +2,6 @@
 {
   home.packages = with pkgs; [
     rustc
-    rustup
-    rustfmt
-    rust-analyzer
-    cargo
+    rustup  # includes rustfmt, rust-analyzer, cargo
   ];
 }
