@@ -55,6 +55,7 @@ rec {
     ../../Common/packages/PL/Yaml.nix
     ../../Common/packages/PL/Z3.nix
 
+    ../../Common/packages/Utils/Android.nix
     ../../Common/packages/Utils/Browser.nix
     ../../Common/packages/Utils/Chat.nix
     ../../Common/packages/Utils/Compress.nix
