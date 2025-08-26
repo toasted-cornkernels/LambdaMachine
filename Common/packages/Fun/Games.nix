@@ -4,6 +4,7 @@
     opentyrian
     vitetris
     crispy-doom
+    ttyper
   ];
 }
 

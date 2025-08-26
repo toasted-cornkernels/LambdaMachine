@@ -5,6 +5,7 @@
    # gcc
    stdman
    # libclang
+   clang-tools
  ];
 }
 
