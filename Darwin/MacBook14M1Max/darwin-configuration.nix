@@ -27,6 +27,7 @@
     casks = [
       "alfred"
       "android-file-transfer"
+      "anki"
       "appcleaner"
       "balenaetcher"
       "basictex"
@@ -48,11 +49,9 @@
     ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
-      "Dark Mode Wallpaper Switcher" = 1488154568;
       "Dark Reader for Safari" = 1438243180;
       "Hidden Bar" = 1452453066;
       "KakaoTalk" = 869223134;
-      "Magnet" = 441258766;
       "Marked 2 - Markdown Preview" = 890031187;
       "TextSniper - OCR, Copy & Paste" = 1528890965;
     };
