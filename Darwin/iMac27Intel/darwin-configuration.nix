@@ -35,6 +35,7 @@
       "betterdisplay"
       "brave-browser"
       "crossover"
+      "element"
       "firefox"
       "fliqlo"
       "ghostty"

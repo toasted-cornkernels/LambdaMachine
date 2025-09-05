@@ -44,14 +44,5 @@
       "wkhtmltopdf"
       "zoom"
     ];
-    masApps = {
-      "AdGuard for Safari" = 1440147259;
-      "Dark Reader for Safari" = 1438243180;
-      "Hidden Bar" = 1452453066;
-      "Microsoft Excel" = 462058435;
-      "Microsoft PowerPoint" = 462062816;
-      "Microsoft Word" = 462054704;
-      "iMovie" = 408981434;
-    };
   };
 }
