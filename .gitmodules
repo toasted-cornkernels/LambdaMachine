@@ -10,3 +10,6 @@
 [submodule "ExternalConfigs/dots"]
 	path = ExternalConfigs/dots
 	url = ../dots.git
+[submodule "ExternalConfigs/SKKJisho"]
+	path = ExternalConfigs/SKKJisho
+	url = https://github.com/skk-dev/dict.git

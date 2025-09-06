@@ -29,7 +29,7 @@
       "android-file-transfer"
       "anki"
       "appcleaner"
-      "aquaskk"
+      "macskk"
       "balenaetcher"
       "basictex"
       "betterdisplay"
