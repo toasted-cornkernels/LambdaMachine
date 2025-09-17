@@ -42,6 +42,7 @@
       "hammerspoon"
       "handbrake"
       "hhkb-studio"
+      "keymapp"
       "musicbrainz-picard"
       "proton-pass"
       "protonvpn"

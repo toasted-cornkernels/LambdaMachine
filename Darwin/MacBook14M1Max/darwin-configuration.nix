@@ -40,6 +40,7 @@
       "ghostty"
       "hammerspoon"
       "hhkb-studio"
+      "keymapp"
       "proton-pass"
       "protonvpn"
       "syncthing"

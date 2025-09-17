@@ -34,6 +34,7 @@
       "ghostty"
       "hammerspoon"
       "hhkb-studio"
+      "keymapp"
       "microsoft-auto-update"
       "microsoft-teams"
       "monodraw"
