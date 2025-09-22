@@ -36,7 +36,6 @@
       "hhkb-studio"
       "keymapp"
       "microsoft-auto-update"
-      "microsoft-teams"
       "monodraw"
       "uhk-agent"
       "visual-studio-code"
