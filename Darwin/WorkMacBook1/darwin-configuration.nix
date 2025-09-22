@@ -35,7 +35,6 @@
       "hammerspoon"
       "hhkb-studio"
       "keymapp"
-      "microsoft-auto-update"
       "monodraw"
       "uhk-agent"
       "visual-studio-code"
