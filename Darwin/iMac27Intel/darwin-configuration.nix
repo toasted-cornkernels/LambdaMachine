@@ -43,6 +43,7 @@
       "hhkb-studio"
       "keymapp"
       "musicbrainz-picard"
+      "netnewswire"
       "proton-pass"
       "protonvpn"
       "syncthing"
