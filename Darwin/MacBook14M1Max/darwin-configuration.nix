@@ -41,6 +41,7 @@
       "hammerspoon"
       "hhkb-studio"
       "keymapp"
+      "netnewswire"
       "proton-pass"
       "protonvpn"
       "syncthing"
