@@ -47,6 +47,7 @@ rec {
     ../../Common/packages/PL/Prolog.nix
     ../../Common/packages/PL/Python.nix
     ../../Common/packages/PL/Racket.nix
+    ../../Common/packages/PL/RestructuredText.nix
     ../../Common/packages/PL/Ruby.nix
     ../../Common/packages/PL/Rust.nix
     ../../Common/packages/PL/Scala.nix
