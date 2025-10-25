@@ -39,7 +39,7 @@
       "fliqlo"
       "ghostty"
       "hammerspoon"
-      "handbrake"
+      "handbrake-app"
       "hhkb-studio"
       "keymapp"
       "musicbrainz-picard"
