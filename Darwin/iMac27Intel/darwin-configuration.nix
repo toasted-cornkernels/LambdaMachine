@@ -50,7 +50,6 @@
       "uhk-agent"
       "utm"
       "vlc"
-      "wkhtmltopdf"
       "xld"
     ];
     masApps = {
