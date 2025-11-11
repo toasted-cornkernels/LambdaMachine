@@ -17,9 +17,19 @@
   };
 
   programs = {
-    gnupg.agent.enable = true;
+    gnupg = {
+      agent = {
+        enable = true;
+      };
+    };
     zsh = {
       enable = true;
+    };
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
     };
   };
 
