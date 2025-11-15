@@ -49,7 +49,6 @@
       "uhk-agent"
       "utm"
       "vlc"
-      "wkhtmltopdf"
     ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
