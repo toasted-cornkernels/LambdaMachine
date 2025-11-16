@@ -37,6 +37,7 @@
       "hhkb-studio"
       "keymapp"
       "monodraw"
+      "ungoogled-chromium"
       "uhk-agent"
       "visual-studio-code"
       "vlc"

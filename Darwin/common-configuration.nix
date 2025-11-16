@@ -25,12 +25,6 @@
     zsh = {
       enable = true;
     };
-    direnv = {
-      enable = true;
-      nix-direnv = {
-        enable = true;
-      };
-    };
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;

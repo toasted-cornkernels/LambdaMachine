@@ -6,6 +6,7 @@
    stdman
    # libclang
    clang-tools
+   vcpkg
  ];
 }
 
