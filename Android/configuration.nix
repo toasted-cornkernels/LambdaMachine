@@ -12,7 +12,6 @@
   environment.packages = with pkgs; [
     vim
     emacs
-    # git
     wget
     curl
     openssh
@@ -31,6 +30,15 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+
+  android-integration = {
+    termux-open.enable = true;
+    termux-open-url.enable = true;
+    termux-reload-settings.enable = true;
+    termux-setup-storage.enable = true;
+    termux-wake-lock.enable = true;
+    termux-wake-unlock.enable = true;
+  };
 
   home-manager = {
     config = ./home.nix;

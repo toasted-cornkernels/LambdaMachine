@@ -17,7 +17,11 @@
   };
 
   programs = {
-    gnupg.agent.enable = true;
+    gnupg = {
+      agent = {
+        enable = true;
+      };
+    };
     zsh = {
       enable = true;
     };

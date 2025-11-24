@@ -15,6 +15,7 @@
       {
         name = "railwaycat/emacsmacport/emacs-mac";
         args = [
+          "HEAD"
           "with-imagemagick"
           "with-mac-metal"
           "with-starter"
@@ -36,11 +37,11 @@
       "hhkb-studio"
       "keymapp"
       "monodraw"
+      "ungoogled-chromium"
       "uhk-agent"
       "visual-studio-code"
       "vlc"
       "webex"
-      "wkhtmltopdf"
       "zoom"
     ];
   };

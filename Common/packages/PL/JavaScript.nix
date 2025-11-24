@@ -8,6 +8,7 @@
     typescript
     nodePackages.typescript-language-server
     nodePackages.prettier
+    vscode-langservers-extracted
   ];
 }
 
