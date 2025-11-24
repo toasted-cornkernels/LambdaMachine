@@ -44,7 +44,7 @@
       "netnewswire"
       "proton-pass"
       "protonvpn"
-      "syncthing"
+      "syncthing-app"
       "uhk-agent"
       "utm"
       "vlc"
