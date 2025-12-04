@@ -35,6 +35,7 @@
       "betterdisplay"
       "brave-browser"
       "crossover"
+      "discord"
       "firefox"
       "fliqlo"
       "ghostty"
