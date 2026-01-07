@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     abcl
     asdf
-    # ecl
+    ecl
     roswell
     sbcl
   ];

@@ -69,7 +69,7 @@ in rec {
 
   home.username = "jslee";
   home.homeDirectory = "/home/${home.username}";
-  home.stateVersion = "23.11";
+  home.stateVersion = "26.05";
 
   home.file = {
     ".emacs.d" = {

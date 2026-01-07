@@ -25,7 +25,7 @@ rec {
     ../../Common/packages/PL/CSharp.nix
     ../../Common/packages/PL/C_C++.nix
     ../../Common/packages/PL/Clojure.nix
-    ../../Common/packages/PL/CommonLisp.nix
+    # ../../Common/packages/PL/CommonLisp.nix
     ../../Common/packages/PL/Crystal.nix
     ../../Common/packages/PL/Elixir.nix
     ../../Common/packages/PL/EmacsLisp.nix
