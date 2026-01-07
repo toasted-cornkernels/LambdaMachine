@@ -5,7 +5,7 @@
     # nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin/master";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -23,7 +23,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-darwin, nixpkgs, nix-darwin, home-manager-darwin
+  outputs = { self, nixpkgs, nix-darwin, home-manager-darwin
     , home-manager, nix-on-droid, ... }@inputs: {
       darwinConfigurations = {
         iMac27Intel = nix-darwin.lib.darwinSystem {
