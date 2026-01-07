@@ -19,7 +19,8 @@
     libheif
     librsvg
     libtool
-    llvm
+    # llvm
+    libllvm
     lzlib
     mpfr
     netpbm
