@@ -25,7 +25,6 @@
     netpbm
     openblas
     pango
-    pangolin
     poppler
     readline
     tesseract
