@@ -5,7 +5,7 @@
     fira-code-symbols
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     d2coding
     # (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "D2Coding" ]; })
     nerd-fonts.fira-code
