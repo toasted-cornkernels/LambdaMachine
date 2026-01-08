@@ -1,30 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   environment = {
     systemPackages = [ pkgs.home-manager ];
-    systemPath = [ "%u/.cargo/bin" ];
+    systemPath = [ "${config.users.users.username.home}/.cargo/bin" ];
   };
 
   nix = {
     package = pkgs.nix;
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
+    settings = { experimental-features = [ "nix-command" "flakes" ]; };
   };
 
   programs = {
-    gnupg = {
-      agent = {
-        enable = true;
-      };
-    };
-    zsh = {
-      enable = true;
-    };
+    gnupg = { agent = { enable = true; }; };
+    zsh = { enable = true; };
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;

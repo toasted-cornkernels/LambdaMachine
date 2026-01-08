@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, ... }:
 
 {
   nixpkgs = {
@@ -20,19 +20,17 @@
     LANGUAGE = "en_US.UTF-8";
   };
 
+  home.sessionPath = [ "${config.users.users.username.home}/.cargo/bin" ];
+
   programs = {
     home-manager = { enable = true; };
     direnv = {
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
-      nix-direnv = {
-        enable = true;
-      };
+      nix-direnv = { enable = true; };
     };
   };
 
-  fonts = {
-    fontconfig.enable = true;
-  };
+  fonts = { fontconfig.enable = true; };
 }
