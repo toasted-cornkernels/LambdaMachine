@@ -20,7 +20,7 @@
     LANGUAGE = "en_US.UTF-8";
   };
 
-  home.sessionPath = [ "${config.users.users.username.home}/.cargo/bin" ];
+  home.sessionPath = [ "$HOME/.cargo/bin" ];
 
   programs = {
     home-manager = { enable = true; };

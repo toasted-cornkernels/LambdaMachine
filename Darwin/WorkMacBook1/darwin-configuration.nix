@@ -36,6 +36,8 @@
       "hammerspoon"
       "hhkb-studio"
       "keymapp"
+      "microsoft-auto-update"
+      "microsoft-teams"
       "monodraw"
       "ungoogled-chromium"
       "uhk-agent"
