@@ -3,7 +3,7 @@
 {
   environment = {
     systemPackages = [ pkgs.home-manager ];
-    systemPath = [ "${config.users.users.username.home}/.cargo/bin" ];
+    systemPath = [ "$HOME/.cargo/bin" ];
   };
 
   nix = {

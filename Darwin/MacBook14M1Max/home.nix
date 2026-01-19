@@ -52,6 +52,7 @@ rec {
     ../../Common/packages/PL/Rust.nix
     ../../Common/packages/PL/Scala.nix
     ../../Common/packages/PL/Scheme.nix
+    ../../Common/packages/PL/Shell.nix
     ../../Common/packages/PL/TeX.nix
     ../../Common/packages/PL/Yaml.nix
     ../../Common/packages/PL/Z3.nix
