@@ -23,6 +23,7 @@
         ];
       }
       "mpv"
+      "tty-clock"
     ];
     casks = [
       "alfred"

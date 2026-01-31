@@ -24,6 +24,7 @@
         ];
       }
       "mpv"
+      "tty-clock"
     ];
     casks = [
       "aldente"
