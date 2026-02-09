@@ -20,7 +20,7 @@
     librsvg
     libtool
     # llvm
-    libllvm
+    # libllvm
     lzlib
     mpfr
     netpbm
