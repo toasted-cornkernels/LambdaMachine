@@ -67,7 +67,6 @@ in rec {
     ../../Common/packages/Utils/Mac.nix
     ../../Common/packages/Utils/Mail.nix
     ../../Common/packages/Utils/Media.nix
-    ../../Common/packages/Utils/News.nix
     ../../Common/packages/Utils/Runtimes.nix
     ../../Common/packages/Utils/Search.nix
     ../../Common/packages/Utils/Shell.nix
