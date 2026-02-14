@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     python312
     pyright
-    poetry
+    # poetry
     python312Packages.pip
   ];
 }

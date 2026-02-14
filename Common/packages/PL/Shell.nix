@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    newsboat
+    bash-language-server
+    shellcheck
+    shfmt
   ];
 }
+

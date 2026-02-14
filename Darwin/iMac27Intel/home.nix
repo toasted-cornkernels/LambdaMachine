@@ -49,6 +49,7 @@ in rec {
     ../../Common/packages/PL/Rust.nix
     ../../Common/packages/PL/Scala.nix
     ../../Common/packages/PL/Scheme.nix
+    ../../Common/packages/PL/Shell.nix
     ../../Common/packages/PL/TeX.nix
     ../../Common/packages/PL/Yaml.nix
     ../../Common/packages/PL/Z3.nix
@@ -66,7 +67,6 @@ in rec {
     ../../Common/packages/Utils/Mac.nix
     ../../Common/packages/Utils/Mail.nix
     ../../Common/packages/Utils/Media.nix
-    ../../Common/packages/Utils/News.nix
     ../../Common/packages/Utils/Runtimes.nix
     ../../Common/packages/Utils/Search.nix
     ../../Common/packages/Utils/Shell.nix
