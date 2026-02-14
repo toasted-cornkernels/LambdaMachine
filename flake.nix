@@ -1,42 +1,29 @@
 {
   description = "LambdaMachine";
-  inputs =
-    let
-      darwin-version = "25.11";
-    in
-    {
-      nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-${darwin-version}-darwin";
-      nixpkgs.url = "github:nixos/nixpkgs/release-${darwin-version}";
-      nix-darwin = {
-        url = "github:nix-darwin/nix-darwin/nix-darwin-${darwin-version}";
-        inputs.nixpkgs.follows = "nixpkgs-darwin";
-      };
-      home-manager-darwin = {
-        url = "github:nix-community/home-manager/release-${darwin-version}";
-        inputs.nixpkgs.follows = "nixpkgs-darwin";
-      };
-      home-manager = {
-        url = "github:nix-community/home-manager/master";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      nix-on-droid = {
-        url = "github:nix-community/nix-on-droid/master";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.home-manager.follows = "home-manager";
-      };
+  inputs = {
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+    home-manager-darwin = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+  };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nix-darwin,
-      home-manager-darwin,
-      home-manager,
-      nix-on-droid,
-      ...
-    }@inputs:
-    {
+  outputs = { self, nixpkgs, nix-darwin, home-manager-darwin
+    , home-manager, nix-on-droid, ... }@inputs: {
       darwinConfigurations = {
         iMac27Intel = nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
@@ -64,7 +51,8 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jslee = import ./Darwin/MacBook14M1Max/home.nix;
+              home-manager.users.jslee =
+                import ./Darwin/MacBook14M1Max/home.nix;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
@@ -122,7 +110,8 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jlee4054 = import ./Darwin/WorkMacBook2/home.nix;
+              home-manager.users.jlee4054 =
+                import ./Darwin/WorkMacBook2/home.nix;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
