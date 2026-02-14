@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     streamlink
     yt-dlp
-    perl5Packages.WWWYoutubeViewer
+    perl540Packages.WWWYoutubeViewer
   ];
 }
 
