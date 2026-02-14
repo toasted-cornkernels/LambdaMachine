@@ -17,7 +17,7 @@ in rec {
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
 
-    ../../Common/packages/Lib/Lib.nix
+    # ../../Common/packages/Lib/Lib.nix
 
     ../../Common/packages/PL/Agda.nix
     ../../Common/packages/PL/CSharp.nix

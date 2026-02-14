@@ -29,6 +29,16 @@
           system = "x86_64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
+            # ==================== HACK ====================
+            # inetutils is broken on 25.11 (see nixpkgs issue #488689)
+            ({ ... }: {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  inetutils = null;
+                })
+              ];
+            })
+            # ==============================================
             ./Darwin/iMac27Intel/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {

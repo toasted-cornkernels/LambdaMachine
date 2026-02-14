@@ -18,7 +18,7 @@ rec {
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
 
-    ../../Common/packages/Lib/Lib.nix
+    # ../../Common/packages/Lib/Lib.nix
 
     ../../Common/packages/PL/CSharp.nix
     ../../Common/packages/PL/C_C++.nix
