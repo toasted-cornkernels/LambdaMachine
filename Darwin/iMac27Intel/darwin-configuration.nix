@@ -42,6 +42,8 @@
       "handbrake-app"
       "hhkb-studio"
       "keymapp"
+      "minecraft"
+      "modrinth"
       "musicbrainz-picard"
       "netnewswire"
       "proton-pass"
