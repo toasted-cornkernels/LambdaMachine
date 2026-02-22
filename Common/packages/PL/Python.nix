@@ -5,6 +5,7 @@
     pyright
     # poetry
     python312Packages.pip
+    ruff
   ];
 }
 

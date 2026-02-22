@@ -13,13 +13,15 @@
     taps = [ "railwaycat/emacsmacport" ];
     brews = [
       {
-        name = "railwaycat/emacsmacport/emacs-mac";
+        name = "railwaycat/emacsmacport/emacs-mac@30exp";
         args = [
-          "with-imagemagick"
-          "with-mac-metal"
-          "with-starter"
-          "with-emacs-big-sur-icon"
-          "with-xwidgets"
+          "HEAD"
+            "with-imagemagick"
+            "with-mac-metal"
+            "with-starter"
+            "with-emacs-big-sur-icon"
+            "with-xwidgets"
+            "with-unlimited-select"
         ];
       }
       "mpv"
