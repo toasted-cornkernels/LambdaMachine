@@ -55,12 +55,12 @@
                -x \
                --audio-format mp3 \
                --audio-quality 0 '';
-      mp3 = "iina --no-video --quiet";
-      mp32 = "iina --no-video --really-quiet";
+      mp3 = "mpv --no-video --quiet";
+      mp32 = "mpv --no-video --really-quiet";
       tmuxlocal = "tmux attach -t local";
       tmuxssh = "tmux attach -t ssh";
       fw = "w3m $(sk)";
-      playvideo = "iina --no-config --vo=tct ";
+      playvideo = "mpv --no-config --vo=tct ";
 
       ss = "source ~/.zshrc";
       pfind = "ps -ef | grep -i ";
@@ -78,6 +78,8 @@
       fvi = "${pkgs.vim}/bin/vim $(sk)";
 
       emacs = "emacs -nw";
+      spacemacs = "emacs --init-directory=.emacs.d.spacemacs";
+      doomemacs = "emacs --init-directory=.emacs.d.doom";
       e = "emacsclient -t";
       ef = "emacsclient $(sk)";
 
