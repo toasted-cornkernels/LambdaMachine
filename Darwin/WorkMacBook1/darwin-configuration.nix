@@ -39,6 +39,7 @@
       "hhkb-studio"
       "keymapp"
       "microsoft-auto-update"
+      "microsoft-outlook"
       "microsoft-teams"
       "monodraw"
       "syncthing-app"
