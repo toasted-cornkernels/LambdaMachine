@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     autoconf
     automake
+    bazelisk
     cmake
     cscope
     ctags
