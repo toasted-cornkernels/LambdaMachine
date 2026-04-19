@@ -44,7 +44,6 @@
       "monodraw"
       "syncthing-app"
       "uhk-agent"
-      "ungoogled-chromium"
       "visual-studio-code"
       "vlc"
       "webex"
