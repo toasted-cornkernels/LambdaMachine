@@ -15,7 +15,6 @@
       {
         name = "railwaycat/emacsmacport/emacs-mac@30exp";
         args = [
-          "HEAD"
             "with-imagemagick"
             "with-mac-metal"
             "with-starter"
