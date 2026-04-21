@@ -37,15 +37,12 @@
       "hammerspoon"
       "hhkb-studio"
       "keymapp"
-      "microsoft-auto-update"
-      "microsoft-outlook"
       "microsoft-teams"
       "monodraw"
       "syncthing-app"
       "uhk-agent"
       "visual-studio-code"
       "vlc"
-      "webex"
       "zoom"
     ];
   };
