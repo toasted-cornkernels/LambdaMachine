@@ -64,6 +64,9 @@
                 lambdaMachineDir = "LambdaMachine";
                 nixpkgs-unstable = nixpkgs-unstable;
               };
+              home-manager.sharedModules = [
+                ./Darwin/common-home.nix
+              ];
             }
           ];
         };
@@ -73,16 +76,16 @@
           modules = [
             # ==================== HACK ====================
             # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            (
-              { ... }:
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    inetutils = null;
-                  })
-                ];
-              }
-            )
+            # (
+            #   { ... }:
+            #   {
+            #     nixpkgs.overlays = [
+            #       (final: prev: {
+            #         inetutils = null;
+            #       })
+            #     ];
+            #   }
+            # )
             # ==============================================
             ./Darwin/MacBook14M1Max/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
@@ -129,6 +132,9 @@
                 lambdaMachineDir = "LambdaMachine";
                 nixpkgs-unstable = nixpkgs-unstable;
               };
+              home-manager.sharedModules = [
+                ./Darwin/common-home.nix
+              ];
             }
           ];
         };
@@ -161,8 +167,11 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
-                username = "jslee";
+                nixpkgs-unstable = nixpkgs-unstable;
               };
+              home-manager.sharedModules = [
+                ./Darwin/common-home.nix
+              ];
             }
           ];
         };
