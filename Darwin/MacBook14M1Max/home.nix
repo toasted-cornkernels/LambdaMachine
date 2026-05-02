@@ -59,7 +59,6 @@ rec {
 
     ../../Common/packages/Utils/Android.nix
     ../../Common/packages/Utils/Browser.nix
-    ../../Common/packages/Utils/Chat.nix
     ../../Common/packages/Utils/Compress.nix
     ../../Common/packages/Utils/DB.nix
     ../../Common/packages/Utils/Dev.nix

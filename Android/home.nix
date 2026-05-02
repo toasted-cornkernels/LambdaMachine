@@ -47,7 +47,6 @@ rec {
     ../Common/packages/PL/Yaml.nix
 
     ../Common/packages/Utils/Browser.nix
-    ../Common/packages/Utils/Chat.nix
     ../Common/packages/Utils/Compress.nix
     ../Common/packages/Utils/DB.nix
     ../Common/packages/Utils/Dev.nix

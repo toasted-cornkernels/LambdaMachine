@@ -4,6 +4,7 @@
     cloc
     duf
     dust
+    gdu
     gotop
     onefetch
     smartmontools

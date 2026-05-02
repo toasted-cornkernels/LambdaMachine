@@ -4,8 +4,6 @@
     autoconf
     automake
     cmake
-    cscope
-    ctags
     gnumake
     gradle
     maven

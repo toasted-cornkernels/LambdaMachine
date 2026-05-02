@@ -36,7 +36,6 @@
       "balenaetcher"
       "basictex"
       "betterdisplay"
-      "brave-browser"
       "crossover"
       "discord"
       "firefox"
