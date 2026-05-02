@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, nixpkgs-unstable, ... }:
 
 {
   nixpkgs = {
@@ -24,6 +24,17 @@
 
   programs = {
     home-manager = { enable = true; };
+    direnv = 
+      let unstable = import nixpkgs-unstable {
+        system = "aarch64-darwin";
+      };
+    in {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      nix-direnv = { enable = true; };
+      package = unstable.direnv;
+    };
   };
 
   fonts = { fontconfig.enable = true; };

@@ -92,10 +92,6 @@ rec {
     ".hammerspoon" = {
       source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
     };
-    #"RSS" = { # TODO submodule RSS
-    #  enable = true;
-    #  recursive = true;
-    #};
     ".vimrc" = {
       source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
     };

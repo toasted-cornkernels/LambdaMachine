@@ -95,6 +95,9 @@
                 lambdaMachineDir = "LambdaMachine";
                 nixpkgs-unstable = nixpkgs-unstable;
               };
+              home-manager.sharedModules = [
+                ./Darwin/common-home.nix
+              ];
             }
           ];
         };
