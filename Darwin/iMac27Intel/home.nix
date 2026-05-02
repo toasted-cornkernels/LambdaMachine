@@ -1,6 +1,8 @@
-{ pkgs, config, lambdaMachineDir, ... }:
-let inherit (config.lib.file) mkOutOfStoreSymlink;
-in rec {
+{ pkgs, config, lambdaMachineDir, nixpkgs-unstable ... }:
+let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
+rec {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
@@ -12,18 +14,14 @@ in rec {
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
     ../../Common/modules/starship.nix
-    # ../../Common/modules/newsboat.nix
 
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
 
-    # ../../Common/packages/Lib/Lib.nix
-
-    ../../Common/packages/PL/Agda.nix
     ../../Common/packages/PL/CSharp.nix
     ../../Common/packages/PL/C_C++.nix
     ../../Common/packages/PL/Clojure.nix
-    # ../../Common/packages/PL/CommonLisp.nix
+    ../../Common/packages/PL/CommonLisp.nix
     ../../Common/packages/PL/Crystal.nix
     ../../Common/packages/PL/Elixir.nix
     ../../Common/packages/PL/EmacsLisp.nix
@@ -91,10 +89,6 @@ in rec {
       source = mkOutOfStoreSymlink
         "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
     };
-    #"RSS" = { # TODO submodule RSS
-    #  enable = true;
-    #  recursive = true;
-    #};
     ".vimrc" = {
       source = mkOutOfStoreSymlink
         "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
@@ -120,6 +114,21 @@ in rec {
         source = mkOutOfStoreSymlink
           "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
       };
+    };
+  };
+
+  programs = {
+    home-manager = { enable = true; };
+    direnv = 
+      let unstable = import nixpkgs-unstable {
+        system = "aarch64-darwin";
+      };
+    in {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      nix-direnv = { enable = true; };
+      package = unstable.direnv;
     };
   };
 }

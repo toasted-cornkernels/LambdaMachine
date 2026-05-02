@@ -62,6 +62,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
+                nixpkgs-unstable = nixpkgs-unstable;
               };
             }
           ];
@@ -92,6 +93,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
+                nixpkgs-unstable = nixpkgs-unstable;
               };
             }
           ];
