@@ -1,4 +1,9 @@
-{ pkgs, config, lambdaMachineDir, ... }:
+{
+  pkgs,
+  config,
+  lambdaMachineDir,
+  ...
+}:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
@@ -6,26 +11,20 @@ rec {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
-    ../common-home.nix
-
     ../../Common/modules/fzf.nix
     ../../Common/modules/htop.nix
     ../../Common/modules/tmux.nix
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
     ../../Common/modules/starship.nix
-    # ../../Common/modules/newsboat.nix
 
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
 
-    # ../../Common/packages/Lib/Lib.nix
-
-    ../../Common/packages/PL/Agda.nix
     ../../Common/packages/PL/CSharp.nix
     ../../Common/packages/PL/C_C++.nix
     ../../Common/packages/PL/Clojure.nix
-    # ../../Common/packages/PL/CommonLisp.nix
+    ../../Common/packages/PL/CommonLisp.nix
     ../../Common/packages/PL/Crystal.nix
     ../../Common/packages/PL/Elixir.nix
     ../../Common/packages/PL/EmacsLisp.nix
@@ -99,6 +98,9 @@ rec {
       enable-ssh-support
       pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
     '';
+    ".w3m/keymap" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.w3m/keymap";
+    };
   };
 
   xdg = {
@@ -108,8 +110,7 @@ rec {
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
       ghostty = {
-        source = mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
       };
     };
   };

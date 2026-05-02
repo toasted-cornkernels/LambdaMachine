@@ -1,4 +1,9 @@
-{ pkgs, config, lambdaMachineDir, nixpkgs-unstable ... }:
+{
+  pkgs,
+  config,
+  lambdaMachineDir,
+  ...
+}:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
@@ -6,8 +11,6 @@ rec {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
-    ../common-home.nix
-
     ../../Common/modules/fzf.nix
     ../../Common/modules/htop.nix
     ../../Common/modules/tmux.nix
@@ -82,24 +85,20 @@ rec {
 
   home.file = {
     ".emacs.d" = {
-      source = mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/ELispMachine";
     };
     ".hammerspoon" = {
-      source = mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine";
     };
     ".vimrc" = {
-      source = mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
     };
     ".gnupg/gpg-agent.conf".text = ''
       enable-ssh-support
       pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
     '';
     ".w3m/keymap" = {
-      source = mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.w3m/keymap";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.w3m/keymap";
     };
   };
 
@@ -107,28 +106,11 @@ rec {
     enable = true;
     configFile = {
       nvim = {
-        source = mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
       ghostty = {
-        source = mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
       };
-    };
-  };
-
-  programs = {
-    home-manager = { enable = true; };
-    direnv = 
-      let unstable = import nixpkgs-unstable {
-        system = "aarch64-darwin";
-      };
-    in {
-      enable = true;
-      enableZshIntegration = true;
-      enableBashIntegration = true;
-      nix-direnv = { enable = true; };
-      package = unstable.direnv;
     };
   };
 }

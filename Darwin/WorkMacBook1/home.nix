@@ -1,4 +1,9 @@
-{ pkgs, config, lambdaMachineDir, nixpkgs-unstable, ... }:
+{
+  pkgs,
+  config,
+  lambdaMachineDir,
+  ...
+}:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
@@ -6,8 +11,6 @@ rec {
 
   home.sessionPath = [ "/opt/homebrew/bin" ];
   imports = [
-    ../common-home.nix
-
     ../../Common/modules/fzf.nix
     ../../Common/modules/htop.nix
     ../../Common/modules/tmux.nix
@@ -90,8 +93,7 @@ rec {
       pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
     '';
     ".w3m/keymap" = {
-      source = mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.w3m/keymap";
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.w3m/keymap";
     };
   };
 
@@ -102,8 +104,7 @@ rec {
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
       ghostty = {
-        source = mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
       };
     };
   };
