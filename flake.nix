@@ -40,19 +40,6 @@
           system = "x86_64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
-            # ==================== HACK ====================
-            # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            (
-              { ... }:
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    inetutils = null;
-                  })
-                ];
-              }
-            )
-            # ==============================================
             ./Darwin/iMac27Intel/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
@@ -74,19 +61,6 @@
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
-            # ==================== HACK ====================
-            # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            # (
-            #   { ... }:
-            #   {
-            #     nixpkgs.overlays = [
-            #       (final: prev: {
-            #         inetutils = null;
-            #       })
-            #     ];
-            #   }
-            # )
-            # ==============================================
             ./Darwin/MacBook14M1Max/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
@@ -108,19 +82,6 @@
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
-            # ==================== HACK ====================
-            # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            (
-              { ... }:
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    inetutils = null;
-                  })
-                ];
-              }
-            )
-            # ==============================================
             ./Darwin/WorkMacBook1/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
@@ -145,19 +106,6 @@
             username = "jslee";
           };
           modules = [
-            # ==================== HACK ====================
-            # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            (
-              { ... }:
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    inetutils = null;
-                  })
-                ];
-              }
-            )
-            # ==============================================
             ./Darwin/WorkMacBook2/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
@@ -182,19 +130,6 @@
             username = "jlee4054";
           };
           modules = [
-            # ==================== HACK ====================
-            # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            (
-              { ... }:
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    inetutils = null;
-                  })
-                ];
-              }
-            )
-            # ==============================================
             ./Darwin/WorkMacBook2/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
