@@ -15,7 +15,6 @@
       {
         name = "railwaycat/emacsmacport/emacs-mac@30exp";
         args = [
-          "HEAD"
           "with-imagemagick"
           "with-mac-metal"
           "with-starter"
@@ -38,15 +37,12 @@
       "hammerspoon"
       "hhkb-studio"
       "keymapp"
-      "microsoft-auto-update"
       "microsoft-teams"
       "monodraw"
       "syncthing-app"
       "uhk-agent"
-      "ungoogled-chromium"
       "visual-studio-code"
       "vlc"
-      "webex"
       "zoom"
     ];
   };

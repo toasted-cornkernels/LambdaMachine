@@ -3,6 +3,7 @@
   inputs = {
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
@@ -22,8 +23,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager-darwin
-    , home-manager, nix-on-droid, ... }@inputs: {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      nix-darwin,
+      home-manager-darwin,
+      home-manager,
+      nix-on-droid,
+      ...
+    }@inputs:
+    {
       darwinConfigurations = {
         iMac27Intel = nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
@@ -31,13 +42,16 @@
           modules = [
             # ==================== HACK ====================
             # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            ({ ... }: {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  inetutils = null;
-                })
-              ];
-            })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    inetutils = null;
+                  })
+                ];
+              }
+            )
             # ==============================================
             ./Darwin/iMac27Intel/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
@@ -58,21 +72,23 @@
           modules = [
             # ==================== HACK ====================
             # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            ({ ... }: {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  inetutils = null;
-                })
-              ];
-            })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    inetutils = null;
+                  })
+                ];
+              }
+            )
             # ==============================================
             ./Darwin/MacBook14M1Max/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jslee =
-                import ./Darwin/MacBook14M1Max/home.nix;
+              home-manager.users.jslee = import ./Darwin/MacBook14M1Max/home.nix;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
@@ -86,13 +102,16 @@
           modules = [
             # ==================== HACK ====================
             # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            ({ ... }: {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  inetutils = null;
-                })
-              ];
-            })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    inetutils = null;
+                  })
+                ];
+              }
+            )
             # ==============================================
             ./Darwin/WorkMacBook1/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
@@ -103,6 +122,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
+                nixpkgs-unstable = nixpkgs-unstable;
               };
             }
           ];
@@ -116,13 +136,16 @@
           modules = [
             # ==================== HACK ====================
             # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            ({ ... }: {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  inetutils = null;
-                })
-              ];
-            })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    inetutils = null;
+                  })
+                ];
+              }
+            )
             # ==============================================
             ./Darwin/WorkMacBook2/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
@@ -147,21 +170,23 @@
           modules = [
             # ==================== HACK ====================
             # inetutils is broken on 25.11 (see nixpkgs issue #488689)
-            ({ ... }: {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  inetutils = null;
-                })
-              ];
-            })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    inetutils = null;
+                  })
+                ];
+              }
+            )
             # ==============================================
             ./Darwin/WorkMacBook2/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jlee4054 =
-                import ./Darwin/WorkMacBook2/home.nix;
+              home-manager.users.jlee4054 = import ./Darwin/WorkMacBook2/home.nix;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";

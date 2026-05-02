@@ -24,12 +24,6 @@
 
   programs = {
     home-manager = { enable = true; };
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      enableBashIntegration = true;
-      nix-direnv = { enable = true; };
-    };
   };
 
   fonts = { fontconfig.enable = true; };
