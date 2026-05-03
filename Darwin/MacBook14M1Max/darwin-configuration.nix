@@ -36,7 +36,6 @@
       "basictex"
       "betterdisplay"
       "crossover"
-      "discord"
       "firefox"
       "fliqlo"
       "ghostty"
