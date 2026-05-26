@@ -31,10 +31,10 @@
       "android-file-transfer"
       "anki"
       "appcleaner"
-      "macskk"
       "balenaetcher"
       "basictex"
       "betterdisplay"
+      "cave-story"
       "crossover"
       "firefox"
       "fliqlo"
@@ -43,6 +43,8 @@
       "handbrake-app"
       "hhkb-studio"
       "keymapp"
+      "macskk"
+      "macvim"
       "minecraft"
       "modrinth"
       "musicbrainz-picard"
@@ -50,11 +52,11 @@
       "proton-pass"
       "protonvpn"
       "syncthing-app"
-      "yes24-ebook"
       "uhk-agent"
       "utm"
       "vlc"
       "xld"
+      "yes24-ebook"
     ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
