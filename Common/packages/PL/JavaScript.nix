@@ -5,8 +5,8 @@
     yarn
     nodejs
     typescript
-    nodePackages.typescript-language-server
-    nodePackages.prettier
+    typescript-language-server
+    prettier
     vscode-langservers-extracted
   ];
 }

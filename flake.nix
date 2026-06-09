@@ -1,16 +1,25 @@
 {
   description = "LambdaMachine";
   inputs = {
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-darwin-26-05.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
+    nixpkgs-darwin-25-11.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-darwin-26-05";
+    };
+    nix-darwin-intel = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin-25-11";
     };
     home-manager-darwin = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-darwin-26-05";
+    };
+    home-manager-darwin-intel = {
       url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin-25-11";
     };
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -29,19 +38,21 @@
       nixpkgs,
       nixpkgs-unstable,
       nix-darwin,
+      nix-darwin-intel,
       home-manager-darwin,
+      home-manager-darwin-intel,
       home-manager,
       nix-on-droid,
       ...
     }@inputs:
     {
       darwinConfigurations = {
-        iMac27Intel = nix-darwin.lib.darwinSystem {
+        iMac27Intel = nix-darwin-intel.lib.darwinSystem {
           system = "x86_64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
             ./Darwin/iMac27Intel/darwin-configuration.nix
-            home-manager-darwin.darwinModules.home-manager
+            home-manager-darwin-intel.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
