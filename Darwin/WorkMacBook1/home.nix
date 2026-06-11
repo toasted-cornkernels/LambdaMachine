@@ -89,6 +89,9 @@ rec {
     ".vimrc" = {
       source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
     };
+    ".gvimrc" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.gvimrc";
+    };
     ".gnupg/gpg-agent.conf".text = ''
       enable-ssh-support
       pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
