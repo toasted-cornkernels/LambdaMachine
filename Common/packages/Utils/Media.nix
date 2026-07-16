@@ -10,6 +10,7 @@
     portaudio
     portmidi
     python312Packages.pygments
+
   ];
 }
 

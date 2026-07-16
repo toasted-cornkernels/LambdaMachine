@@ -5,6 +5,7 @@
     automake
     bazelisk
     cmake
+    libtool
     gnumake
     gradle
     maven

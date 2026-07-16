@@ -33,7 +33,7 @@
       enableZshIntegration = true;
       enableBashIntegration = true;
       nix-direnv = { enable = true; };
-      package = unstable.direnv;
+      # package = unstable.direnv;
     };
   };
 
