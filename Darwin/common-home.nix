@@ -1,4 +1,4 @@
-{ config, nixpkgs-unstable, ... }:
+{ config, nixpkgs-unstable, pkgs, ... }:
 
 {
   nixpkgs = {
@@ -26,7 +26,7 @@
     home-manager = { enable = true; };
     direnv = 
       let unstable = import nixpkgs-unstable {
-        system = "aarch64-darwin";
+        system = pkgs.stdenv.hostPlatform.system;
       };
     in {
       enable = true;
