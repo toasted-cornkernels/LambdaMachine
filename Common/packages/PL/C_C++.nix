@@ -7,6 +7,7 @@
    # libclang
    clang-tools
    vcpkg
+   cmake-format
  ];
 }
 
