@@ -7,7 +7,6 @@
     moreutils
     nyancat
     rlwrap
-    watchman
     ps
   ];
 }
