@@ -9,7 +9,7 @@ let
 in
 rec {
 
-  home.sessionPath = [ "/opt/homebrew/bin" ];
+  home.sessionPath = [ "/usr/local/bin" ];
   imports = [
     ../../Common/modules/fzf.nix
     ../../Common/modules/htop.nix
