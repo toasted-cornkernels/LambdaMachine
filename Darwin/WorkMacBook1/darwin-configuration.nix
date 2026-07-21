@@ -34,6 +34,7 @@
       "drawio"
       "fliqlo"
       "ghostty"
+      "github-copilot-app"
       "hammerspoon"
       "hhkb-studio"
       "keymapp"
