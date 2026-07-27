@@ -38,7 +38,7 @@
       "hammerspoon"
       "hhkb-studio"
       "keymapp"
-      "macvim"
+      "macvim-app"
       "microsoft-teams"
       "monodraw"
       "syncthing-app"

@@ -28,7 +28,7 @@
       "fliqlo"
       "ghostty"
       "hammerspoon"
-      "macvim"
+      "macvim-app"
       "visual-studio-code"
     ];
     masApps = { };

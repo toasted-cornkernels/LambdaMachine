@@ -44,7 +44,7 @@
       "hhkb-studio"
       "keymapp"
       "macskk"
-      "macvim"
+      "macvim-app"
       "minecraft"
       "modrinth"
       "musicbrainz-picard"
