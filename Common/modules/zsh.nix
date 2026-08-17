@@ -50,11 +50,12 @@
     shellAliases = {
       ytmp3 = ''
         yt-dlp -ic \
-               -o "%(playlist_index)s-%(title)s.%(ext)s" \
+               -o "%(playlist_index)02d %(track,title)s.%(ext)s" \
                --yes-playlist \
                -x \
                --audio-format mp3 \
-               --audio-quality 0 '';
+               --audio-quality 0 \
+               --extractor-args "youtube:player-client=web_embedded,web,tv"'';
       mp3 = "mpv --no-video --quiet";
       mp32 = "mpv --no-video --really-quiet";
       tmuxlocal = "tmux attach -t local";
