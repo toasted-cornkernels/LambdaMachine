@@ -17,6 +17,7 @@ rec {
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
     ../../Common/modules/starship.nix
+    ../../Common/modules/neovim-treesitter.nix
 
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
@@ -59,7 +60,6 @@ rec {
     ../../Common/packages/Utils/Encrypt.nix
     ../../Common/packages/Utils/Edit.nix
     ../../Common/packages/Utils/Fonts.nix
-    ../../Common/packages/Utils/LLM.nix
     ../../Common/packages/Utils/Mac.nix
     ../../Common/packages/Utils/Mail.nix
     ../../Common/packages/Utils/Media.nix
@@ -78,6 +78,8 @@ rec {
 
   home.username = "jslee";
   home.homeDirectory = /Users/${home.username};
+
+  home.packages = [ pkgs.github-copilot-cli ];
 
   home.file = {
     ".emacs.d" = {

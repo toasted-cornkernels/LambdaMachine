@@ -1,10 +1,24 @@
-{ config, lambdaMachineDir, username, ... }:
+{ lib, pkgs, config, lambdaMachineDir, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 rec {
-
   home.sessionPath = [ "/opt/homebrew/bin" ];
+
+  # Relocate the generated zsh config under ZDOTDIR so that ~/.zshrc stays a
+  # plain, writable file. Machine-local provisioning tooling appends to it and
+  # cannot write to a read-only store path. Both hooks are optional: the files
+  # are untracked and absent on a fresh checkout.
+  programs.zsh = {
+    dotDir = ".config/zsh";
+    envExtra = ''
+      [ -r "$HOME/.zshenv.local" ] && . "$HOME/.zshenv.local"
+    '';
+    initExtra = ''
+      [ -r "$HOME/.zshrc.local" ] && . "$HOME/.zshrc.local"
+    '';
+  };
+
   imports = [
     ../common-home.nix
 
@@ -14,6 +28,7 @@ rec {
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
     ../../Common/modules/starship.nix
+    ../../Common/modules/neovim-treesitter.nix
 
     ../../Common/packages/PL/Go.nix
     ../../Common/packages/PL/Ruby.nix
@@ -36,8 +51,20 @@ rec {
     ../programs/zsh.nix
   ];
 
-  home.username = username;
-  home.homeDirectory = /Users/${username};
+  home.username = "jlee4430";
+  home.homeDirectory = /Users/${home.username};
+
+  # claude-agent-acp only bakes claude-code in as the default value of
+  # CLAUDE_CODE_EXECUTABLE. Nixpkgs' claude-code cannot be built on this
+  # machine, so point the wrapper at the Homebrew-managed binary instead.
+  # Machine-local and impure by design -- it assumes Homebrew's claude.
+  home.packages = [
+    (pkgs.claude-agent-acp.override {
+      claude-code = pkgs.writeShellScriptBin "claude" ''
+        exec /opt/homebrew/bin/claude "$@"
+      '';
+    })
+  ];
 
   home.file = {
     ".emacs.d" = {
@@ -48,6 +75,9 @@ rec {
     };
     ".vimrc" = {
       source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.vimrc";
+    };
+    ".gvimrc" = {
+      source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/.gvimrc";
     };
   };
 

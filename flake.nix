@@ -1,6 +1,7 @@
 {
   description = "LambdaMachine";
   inputs = {
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nixpkgs-darwin-26-05.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     # nixpkgs-darwin-26-05.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
@@ -35,6 +36,7 @@
   outputs =
     {
       self,
+      determinate,
       nixpkgs,
       nixpkgs-unstable,
       nix-darwin,
@@ -112,17 +114,27 @@
         };
         WorkMacBook2 = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = {
-            inherit inputs;
-            username = "jslee";
-          };
+          specialArgs = { inherit inputs; };
           modules = [
+            inputs.determinate.darwinModules.default
+	    ({ ... }: {
+              # Enable the Determinate Nix module
+              determinateNix = {
+                enable = true; # ensure compatibility between nix-darwin and Determinate
+                # Custom settings written to /etc/nix/nix.custom.conf
+                customSettings = {
+                  flake-registry = "/etc/nix/flake-registry.json";
+                };
+              };
+            })
             ./Darwin/WorkMacBook2/darwin-configuration.nix
             home-manager-darwin.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jslee = import ./Darwin/WorkMacBook2/home.nix;
+              # Move pre-existing dotfiles aside instead of aborting activation.
+              home-manager.backupFileExtension = "bak";
+              home-manager.users.jlee4430 = import ./Darwin/WorkMacBook2/home.nix;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 lambdaMachineDir = "LambdaMachine";
@@ -131,27 +143,6 @@
               home-manager.sharedModules = [
                 ./Darwin/common-home.nix
               ];
-            }
-          ];
-        };
-        WorkMacBook21 = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = {
-            inherit inputs;
-            username = "jlee4054";
-          };
-          modules = [
-            ./Darwin/WorkMacBook2/darwin-configuration.nix
-            home-manager-darwin.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.jlee4054 = import ./Darwin/WorkMacBook2/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                lambdaMachineDir = "LambdaMachine";
-                username = "jlee4054";
-              };
             }
           ];
         };
