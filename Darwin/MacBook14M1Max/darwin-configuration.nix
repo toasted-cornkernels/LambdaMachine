@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  system.primaryUser = "jslee";
-  users.users.jslee = {
-    home = /Users/jslee;
+  system.primaryUser = username;
+  users.users.${username} = {
+    home = /Users/${username};
   };
 
   homebrew = {
@@ -16,12 +16,12 @@
       {
         name = "railwaycat/emacsmacport/emacs-mac@30exp";
         args = [
-            "with-imagemagick"
-            "with-mac-metal"
-            "with-starter"
-            "with-emacs-big-sur-icon"
-            "with-xwidgets"
-            "with-unlimited-select"
+          "with-imagemagick"
+          "with-mac-metal"
+          "with-starter"
+          "with-emacs-big-sur-icon"
+          "with-xwidgets"
+          "with-unlimited-select"
         ];
       }
       "mpv"

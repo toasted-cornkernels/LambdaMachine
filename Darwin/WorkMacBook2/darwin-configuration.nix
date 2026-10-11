@@ -1,11 +1,12 @@
-{ lib, pkgs, username, ... }:
+{ pkgs, username, ... }:
 
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
-  users.users.jlee4430 = {
-    home = /Users/jlee4430;
+  system.primaryUser = username;
+  users.users.${username} = {
+    home = /Users/${username};
   };
 
   homebrew = {

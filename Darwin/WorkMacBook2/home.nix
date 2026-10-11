@@ -1,4 +1,10 @@
-{ lib, pkgs, config, lambdaMachineDir, ... }:
+{
+  pkgs,
+  config,
+  lambdaMachineDir,
+  username,
+  ...
+}:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
@@ -51,7 +57,7 @@ rec {
     ../programs/zsh.nix
   ];
 
-  home.username = "jlee4430";
+  home.username = username;
   home.homeDirectory = /Users/${home.username};
 
   # claude-agent-acp only bakes claude-code in as the default value of
@@ -88,8 +94,7 @@ rec {
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/NeovimConfig";
       };
       ghostty = {
-        source = mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
       };
     };
   };

@@ -2,6 +2,7 @@
   pkgs,
   config,
   lambdaMachineDir,
+  username,
   ...
 }:
 let
@@ -77,7 +78,7 @@ rec {
     ../programs/zsh.nix
   ];
 
-  home.username = "jslee";
+  home.username = username;
   home.homeDirectory = /Users/${home.username};
 
   home.file = {
