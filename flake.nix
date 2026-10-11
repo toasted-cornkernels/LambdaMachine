@@ -49,103 +49,123 @@
     }@inputs:
     {
       darwinConfigurations = {
-        iMac27Intel = nix-darwin-intel.lib.darwinSystem {
-          system = "x86_64-darwin";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./Darwin/iMac27Intel/darwin-configuration.nix
-            home-manager-darwin-intel.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.jslee = import ./Darwin/iMac27Intel/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                lambdaMachineDir = "LambdaMachine";
-                nixpkgs-unstable = nixpkgs-unstable;
-              };
-              home-manager.sharedModules = [
-                ./Darwin/common-home.nix
-              ];
-            }
-          ];
-        };
-        MacBook14M1Max = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./Darwin/MacBook14M1Max/darwin-configuration.nix
-            home-manager-darwin.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.jslee = import ./Darwin/MacBook14M1Max/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                lambdaMachineDir = "LambdaMachine";
-                nixpkgs-unstable = nixpkgs-unstable;
-              };
-              home-manager.sharedModules = [
-                ./Darwin/common-home.nix
-              ];
-            }
-          ];
-        };
-        WorkMacBook1 = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./Darwin/WorkMacBook1/darwin-configuration.nix
-            home-manager-darwin.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.jslee = import ./Darwin/WorkMacBook1/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                lambdaMachineDir = "LambdaMachine";
-                nixpkgs-unstable = nixpkgs-unstable;
-              };
-              home-manager.sharedModules = [
-                ./Darwin/common-home.nix
-              ];
-            }
-          ];
-        };
-        WorkMacBook2 = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.determinate.darwinModules.default
-	    ({ ... }: {
-              # Enable the Determinate Nix module
-              determinateNix = {
-                enable = true; # ensure compatibility between nix-darwin and Determinate
-                # Custom settings written to /etc/nix/nix.custom.conf
-                customSettings = {
-                  flake-registry = "/etc/nix/flake-registry.json";
+        iMac27Intel =
+          let
+            username = "jslee";
+          in
+          nix-darwin-intel.lib.darwinSystem {
+            system = "x86_64-darwin";
+            specialArgs = {
+              inherit inputs username;
+            };
+            modules = [
+              ./Darwin/iMac27Intel/darwin-configuration.nix
+              home-manager-darwin-intel.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.jslee = import ./Darwin/iMac27Intel/home.nix;
+                home-manager.extraSpecialArgs = {
+                  inherit inputs username nixpkgs-unstable;
+                  lambdaMachineDir = "LambdaMachine";
                 };
-              };
-            })
-            ./Darwin/WorkMacBook2/darwin-configuration.nix
-            home-manager-darwin.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              # Move pre-existing dotfiles aside instead of aborting activation.
-              home-manager.backupFileExtension = "bak";
-              home-manager.users.jlee4430 = import ./Darwin/WorkMacBook2/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                lambdaMachineDir = "LambdaMachine";
-                nixpkgs-unstable = nixpkgs-unstable;
-              };
-              home-manager.sharedModules = [
-                ./Darwin/common-home.nix
-              ];
-            }
-          ];
-        };
+                home-manager.sharedModules = [
+                  ./Darwin/common-home.nix
+                ];
+              }
+            ];
+          };
+        MacBook14M1Max =
+          let
+            username = "jslee";
+          in
+          nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit inputs username;
+            };
+            modules = [
+              ./Darwin/MacBook14M1Max/darwin-configuration.nix
+              home-manager-darwin.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.jslee = import ./Darwin/MacBook14M1Max/home.nix;
+                home-manager.extraSpecialArgs = {
+                  inherit inputs username nixpkgs-unstable;
+                  lambdaMachineDir = "LambdaMachine";
+                };
+                home-manager.sharedModules = [
+                  ./Darwin/common-home.nix
+                ];
+              }
+            ];
+          };
+        WorkMacBook1 =
+          let
+            username = "jslee";
+          in
+          nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit inputs username;
+            };
+            modules = [
+              ./Darwin/WorkMacBook1/darwin-configuration.nix
+              home-manager-darwin.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.jslee = import ./Darwin/WorkMacBook1/home.nix;
+                home-manager.extraSpecialArgs = {
+                  inherit inputs username nixpkgs-unstable;
+                  lambdaMachineDir = "LambdaMachine";
+                };
+                home-manager.sharedModules = [
+                  ./Darwin/common-home.nix
+                ];
+              }
+            ];
+          };
+        WorkMacBook2 =
+          let
+            username = "jlee4430";
+          in
+          nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit inputs username;
+            };
+            modules = [
+              inputs.determinate.darwinModules.default
+              ({ ... }: {
+                # Enable the Determinate Nix module
+                determinateNix = {
+                  enable = true; # ensure compatibility between nix-darwin and Determinate
+                  # Custom settings written to /etc/nix/nix.custom.conf
+                  customSettings = {
+                    flake-registry = "/etc/nix/flake-registry.json";
+                  };
+                };
+              })
+              ./Darwin/WorkMacBook2/darwin-configuration.nix
+              home-manager-darwin.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                # Move pre-existing dotfiles aside instead of aborting activation.
+                home-manager.backupFileExtension = "bak";
+                home-manager.users.jlee4430 = import ./Darwin/WorkMacBook2/home.nix;
+                home-manager.extraSpecialArgs = {
+                  inherit inputs username nixpkgs-unstable;
+                  lambdaMachineDir = "LambdaMachine";
+                };
+                home-manager.sharedModules = [
+                  ./Darwin/common-home.nix
+                ];
+              }
+            ];
+          };
       };
       nixOnDroidConfigurations = {
         ZFold6 = nix-on-droid.lib.nixOnDroidConfiguration {

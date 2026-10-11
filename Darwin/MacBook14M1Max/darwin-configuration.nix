@@ -4,6 +4,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
+  system.primaryUser = "jslee";
   users.users.jslee = {
     home = /Users/jslee;
   };

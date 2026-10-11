@@ -23,7 +23,6 @@
 
   system = {
     stateVersion = 4;
-    primaryUser = "jlee4430";
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToControl = true;

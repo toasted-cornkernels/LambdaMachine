@@ -3,6 +3,7 @@
 {
   nixpkgs.hostPlatform = "x86_64-darwin";
   imports = [ ../common-configuration.nix ];
+  system.primaryUser = "jslee";
   environment.systemPackages = [ pkgs.home-manager ];
   users.users.jslee = {
     home = /Users/jslee;
