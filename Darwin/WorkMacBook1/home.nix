@@ -57,9 +57,10 @@ rec {
     ../../Common/packages/Utils/Browser.nix
     ../../Common/packages/Utils/Compress.nix
     ../../Common/packages/Utils/Dev.nix
-    ../../Common/packages/Utils/Encrypt.nix
     ../../Common/packages/Utils/Edit.nix
+    ../../Common/packages/Utils/Encrypt.nix
     ../../Common/packages/Utils/Fonts.nix
+    ../../Common/packages/Utils/LLM.nix
     ../../Common/packages/Utils/Mac.nix
     ../../Common/packages/Utils/Mail.nix
     ../../Common/packages/Utils/Media.nix
@@ -78,8 +79,6 @@ rec {
 
   home.username = "jslee";
   home.homeDirectory = /Users/${home.username};
-
-  home.packages = [ pkgs.github-copilot-cli ];
 
   home.file = {
     ".emacs.d" = {
