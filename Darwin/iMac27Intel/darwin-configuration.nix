@@ -36,6 +36,7 @@
       "basictex"
       "betterdisplay"
       "cave-story"
+      "chatgpt"
       "crossover"
       "firefox"
       "fliqlo"
