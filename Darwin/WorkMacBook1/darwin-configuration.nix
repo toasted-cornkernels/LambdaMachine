@@ -5,7 +5,7 @@
   imports = [ ../common-configuration.nix ];
   environment.systemPackages = [ pkgs.home-manager ];
   system.primaryUser = username;
-  users.users.username = {
+  users.users.${username} = {
     home = /Users/${username};
   };
 
