@@ -118,6 +118,10 @@ rec {
       ghostty = {
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
       };
+      # Gives every mpv an IPC socket for Hammerspoon's media keys.
+      "mpv/scripts/ipc-socket.lua" = {
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine/mpv-scripts/ipc-socket.lua";
+      };
     };
   };
 }
