@@ -27,6 +27,7 @@ let
       tree-sitter-toml
       tree-sitter-tsx
       tree-sitter-typescript
+      tree-sitter-yaml
     ]
   );
 in
