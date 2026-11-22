@@ -34,6 +34,7 @@ rec {
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
     ../../Common/modules/starship.nix
+    ../../Common/modules/emacs-treesitter.nix
     ../../Common/modules/neovim-treesitter.nix
 
     ../../Common/packages/PL/Go.nix

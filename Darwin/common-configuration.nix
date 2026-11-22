@@ -16,6 +16,10 @@
     zsh = { enable = true; };
   };
 
+  # Refresh Homebrew's cask/formula metadata on each switch; stale metadata
+  # fails casks whose upstream replaced a download in place (checksum mismatch).
+  homebrew.onActivation.autoUpdate = true;
+
   security.pam.services.sudo_local.touchIdAuth = true;
 
   nixpkgs.config.allowUnfree = true;

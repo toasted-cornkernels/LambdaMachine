@@ -18,6 +18,7 @@ rec {
     ../../Common/modules/zoxide.nix
     ../../Common/modules/zsh.nix
     ../../Common/modules/starship.nix
+    ../../Common/modules/emacs-treesitter.nix
     ../../Common/modules/neovim-treesitter.nix
 
     ../../Common/packages/Fun/Games.nix
@@ -117,6 +118,10 @@ rec {
       };
       ghostty = {
         source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots/ghostty";
+      };
+      # Gives every mpv an IPC socket for Hammerspoon's media keys.
+      "mpv/scripts/ipc-socket.lua" = {
+        source = mkOutOfStoreSymlink "${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/FennelMachine/mpv-scripts/ipc-socket.lua";
       };
     };
   };
