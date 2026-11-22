@@ -29,7 +29,6 @@
     ];
     casks = [
       "aldente"
-      "alfred"
       "appcleaner"
       "betterdisplay"
       "drawio"
