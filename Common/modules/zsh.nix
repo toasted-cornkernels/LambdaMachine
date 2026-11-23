@@ -45,6 +45,19 @@
 
       export CLICOLOR=1
 
+      loaf() {
+        printf '\n'
+        printf '    (´・ω・`)\n'
+        printf '   /|     |\\\n'
+        printf '  (_|_____|_)\n'
+        printf '\n'
+        printf '  All processes are temporary.\n'
+        printf '  Loafing is eternal.\n'
+        printf '\n'
+        printf '  LET THE BRO LOAF.\n'
+        printf '\n'
+      }
+
       # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
     '';
     shellAliases = {
