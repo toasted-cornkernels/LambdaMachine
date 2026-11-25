@@ -22,6 +22,12 @@
 
   home.sessionPath = [ "$HOME/.cargo/bin" ];
 
+  # Hammerspoon (Lua 5.4) searches this directory before ~/.luarocks, so
+  # FennelMachine's `require("fennel")` gets the Nix-pinned compiler instead of
+  # whatever stale copy luarocks left behind.
+  home.file.".local/share/hammerspoon/site/fennel.lua".source =
+    "${pkgs.lua54Packages.fennel}/share/lua/5.4/fennel.lua";
+
   programs = {
     home-manager = { enable = true; };
     direnv = 

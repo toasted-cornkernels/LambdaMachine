@@ -26,7 +26,6 @@
       }
     ];
     casks = [
-      "alfred"
       "betterdisplay"
       "fliqlo"
       "ghostty"

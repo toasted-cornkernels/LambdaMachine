@@ -36,7 +36,6 @@
   outputs =
     {
       self,
-      determinate,
       nixpkgs,
       nixpkgs-unstable,
       nix-darwin,
@@ -69,6 +68,7 @@
                   inherit inputs username nixpkgs-unstable;
                   lambdaMachineDir = "LambdaMachine";
                 };
+                home-manager.backupFileExtension = "backup";
                 home-manager.sharedModules = [
                   ./Darwin/common-home.nix
                 ];
@@ -95,6 +95,7 @@
                   inherit inputs username nixpkgs-unstable;
                   lambdaMachineDir = "LambdaMachine";
                 };
+                home-manager.backupFileExtension = "backup";
                 home-manager.sharedModules = [
                   ./Darwin/common-home.nix
                 ];
@@ -121,6 +122,7 @@
                   inherit inputs username nixpkgs-unstable;
                   lambdaMachineDir = "LambdaMachine";
                 };
+                home-manager.backupFileExtension = "backup";
                 home-manager.sharedModules = [
                   ./Darwin/common-home.nix
                 ];
@@ -139,10 +141,8 @@
             modules = [
               inputs.determinate.darwinModules.default
               ({ ... }: {
-                # Enable the Determinate Nix module
                 determinateNix = {
-                  enable = true; # ensure compatibility between nix-darwin and Determinate
-                  # Custom settings written to /etc/nix/nix.custom.conf
+                  enable = true;
                   customSettings = {
                     flake-registry = "/etc/nix/flake-registry.json";
                   };
@@ -154,12 +154,12 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 # Move pre-existing dotfiles aside instead of aborting activation.
-                home-manager.backupFileExtension = "bak";
                 home-manager.users.jlee4430 = import ./Darwin/WorkMacBook2/home.nix;
                 home-manager.extraSpecialArgs = {
                   inherit inputs username nixpkgs-unstable;
                   lambdaMachineDir = "LambdaMachine";
                 };
+                home-manager.backupFileExtension = "backup";
                 home-manager.sharedModules = [
                   ./Darwin/common-home.nix
                 ];
