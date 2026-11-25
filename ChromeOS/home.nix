@@ -57,7 +57,7 @@ in rec {
     ./programs/zsh.nix
   ];
 
-  home.packages = with pkgs; [ mpv emacs29 ];
+  home.packages = with pkgs; [ mpv emacs29 ghostty.terminfo ];
 
   home.sessionVariables = {
     EDITOR = "nvim";

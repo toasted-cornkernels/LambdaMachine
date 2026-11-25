@@ -22,6 +22,9 @@
 
   home.sessionPath = [ "$HOME/.cargo/bin" ];
 
+  # Lets this machine resolve TERM=xterm-ghostty when sshed into from Ghostty.
+  home.packages = [ pkgs.ghostty-bin.terminfo ];
+
   # Hammerspoon (Lua 5.4) searches this directory before ~/.luarocks, so
   # FennelMachine's `require("fennel")` gets the Nix-pinned compiler instead of
   # whatever stale copy luarocks left behind.

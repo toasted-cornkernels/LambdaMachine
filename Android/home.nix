@@ -68,6 +68,8 @@ rec {
     ../Common/packages/Utils/Web.nix
   ];
 
+  home.packages = [ pkgs.ghostty.terminfo ];
+
   home.stateVersion = "26.05";
 
   home.sessionVariables = {

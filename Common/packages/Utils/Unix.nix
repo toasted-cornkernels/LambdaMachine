@@ -8,6 +8,5 @@
     nyancat
     rlwrap
     ps
-    ghostty-bin.terminfo
   ];
 }
