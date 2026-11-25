@@ -41,6 +41,7 @@
       "keymapp"
       "macvim-app"
       "microsoft-teams"
+      "microsoft-outlook"
       "monodraw"
       "syncthing-app"
       "uhk-agent"

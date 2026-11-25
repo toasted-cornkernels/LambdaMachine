@@ -12,6 +12,9 @@
     ninja
     pkg-config
     tldr
+    (azure-cli.withExtensions [
+      azure-cli-extensions.azure-devops
+    ])
   ];
 }
 
