@@ -57,4 +57,17 @@ in
       fi
     fi
   '';
+
+  # Nix is the source of truth, so Settings Sync must stay off: it needs a
+  # GitHub sign-in and would upload the private settings. VS Code has no policy
+  # for it, so flip the flag in its state database.
+  home.activation.vscodeSettingsSyncOff = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    db="${userDir}/globalStorage/state.vscdb"
+    if [ -f "$db" ] && [ "$(${pkgs.sqlite}/bin/sqlite3 "$db" \
+         "SELECT value FROM ItemTable WHERE key = 'sync.enable'")" = "true" ]; then
+      run ${pkgs.sqlite}/bin/sqlite3 "$db" \
+        "UPDATE ItemTable SET value = 'false' WHERE key = 'sync.enable'"
+      warnEcho "Turned off VS Code Settings Sync. Restart VS Code if it is running."
+    fi
+  '';
 }
