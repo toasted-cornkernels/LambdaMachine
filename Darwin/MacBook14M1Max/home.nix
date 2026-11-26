@@ -21,6 +21,7 @@ rec {
     ../../Common/modules/emacs-treesitter.nix
     ../../Common/modules/neovim-treesitter.nix
     ../../Common/modules/copilot-cli.nix
+    ../../Common/modules/vscode.nix
 
     ../../Common/packages/Fun/Games.nix
     ../../Common/packages/Fun/Stream.nix
