@@ -2,8 +2,8 @@
 #
 # The nvim-treesitter plugin is kept only for its query corpus; parsers come
 # from here rather than from :TSInstall, which writes into the data directory
-# outside of Nix's control. NeovimConfig/init.lua appends
-# $XDG_DATA_HOME/nvim/site to 'runtimepath' so these are discovered.
+# outside of Nix's control. $XDG_DATA_HOME/nvim/site is on Neovim's default
+# 'runtimepath', so these are discovered without any configuration.
 #
 # Note that the grammars' own queries (upstream ships some under $out/queries)
 # are deliberately not linked: their capture names target the tree-sitter CLI
@@ -15,6 +15,10 @@
 # revision nvim-treesitter pins, rather than from pkgs.tree-sitter-grammars,
 # which follows upstream releases (diff, fennel, kotlin, make, perl, regex,
 # scala, sql and xml are all incompatible from there).
+#
+# The one exception is org, whose queries ship with nvim-orgmode rather than
+# nvim-treesitter. Providing it here stops orgmode from compiling its own copy
+# into the plugin directory on first use.
 { pkgs, lib, ... }:
 
 let
@@ -32,13 +36,16 @@ let
     "c_sharp"
     "clojure"
     "cmake"
+    "comment"
     "commonlisp"
     "cpp"
     "css"
+    "csv"
     "diff"
     "dockerfile"
     "dot"
     "dtd"
+    "editorconfig"
     "eex"
     "elixir"
     "fennel"
@@ -53,6 +60,7 @@ let
     "haskell"
     "heex"
     "html"
+    "http"
     "ini"
     "janet_simple"
     "java"
@@ -61,6 +69,8 @@ let
     "json"
     "kotlin"
     "latex"
+    "luadoc"
+    "luap"
     "make"
     "mermaid"
     "nim"
@@ -68,9 +78,12 @@ let
     "ocaml"
     "ocaml_interface"
     "ocamllex"
+    "org"
     "perl"
+    "printf"
     "python"
     "ql"
+    "racket"
     "regex"
     "rst"
     "ruby"
@@ -78,15 +91,19 @@ let
     "scala"
     "scheme"
     "sql"
+    "ssh_config"
+    "starlark"
     "toml"
+    "tsv"
     "tsx"
     "typescript"
     "xml"
     "yaml"
+    "zsh"
   ];
 
   # Grammars whose nvim-treesitter queries, at the commit pinned in
-  # NeovimConfig/lazy-lock.json, need a newer revision than nixpkgs builds.
+  # NeovimConfig/nvim-pack-lock.json, need a newer revision than nixpkgs builds.
   # Revisions are from that commit's lua/nvim-treesitter/parsers.lua; drop an
   # entry once nixpkgs catches up.
   pinned = {
@@ -101,6 +118,14 @@ let
       repo = "tree-sitter-kotlin";
       rev = "1852ea17b7f60fb3f9d84e0b1555d56b46b39fb1";
       hash = "sha256-7pFQyuRy2tJTL8g3zi6Q1W4AzaNpucu09lae4lmBEyE=";
+    };
+    # Tag 2.0.4: the exact version nvim-orgmode's installer requires. Any other
+    # version makes orgmode warn on startup.
+    org = {
+      owner = "nvim-orgmode";
+      repo = "tree-sitter-org";
+      rev = "f15da8e8fcb3a2d764c7092ae6ba4dc87d3b3093";
+      hash = "sha256-76ImC8GMW+yAKG++AHryUi+MYTmtJ5ogygC+bgNMErA=";
     };
     scala = {
       owner = "tree-sitter";
