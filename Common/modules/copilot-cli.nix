@@ -26,6 +26,8 @@ let
   };
 in
 {
+  imports = [ ./editor-mcp.nix ];
+
   programs.github-copilot-cli = {
     enable = true;
     package = pkgs.github-copilot-cli;
