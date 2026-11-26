@@ -82,6 +82,7 @@ rec {
     ../../Common/packages/Utils/Web.nix
 
     ../programs/zsh.nix
+    ../programs/voice.nix
   ];
 
   home.username = username;
