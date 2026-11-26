@@ -11,6 +11,7 @@
     tree
     file-rename
     gnugrep
+    universal-ctags
   ];
 }
 
