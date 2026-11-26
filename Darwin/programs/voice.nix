@@ -55,6 +55,25 @@ in
         "ja"
       ];
     };
+    vocabulary = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.listOf lib.types.str);
+      description = "Words whisper should expect, by language; sent as its prompt.";
+      default = {
+        en = [
+          "Emacs"
+          "ELisp"
+          "Nix"
+          "nix-darwin"
+          "Hammerspoon"
+          "Fennel"
+          "agent-shell"
+          "Magit"
+          "evil"
+          "whisper.cpp"
+          "CodeQL"
+        ];
+      };
+    };
   };
 
   config = {
@@ -89,7 +108,7 @@ in
 
     xdg.configFile."voice/config.json".text = builtins.toJSON {
       endpoint = "http://127.0.0.1:${toString cfg.port}/inference";
-      inherit (cfg) languages model;
+      inherit (cfg) languages model vocabulary;
     };
   };
 }
