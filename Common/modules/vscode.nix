@@ -58,6 +58,17 @@ in
     fi
   '';
 
+  # dots is public; its pre-commit hook refuses commits that add work data
+  # (values from the private settings, proxies, hosts). Git can't enable a
+  # tracked hook by itself, so point hooksPath at it.
+  home.activation.dotsHooks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    repo="${config.home.homeDirectory}/${lambdaMachineDir}/ExternalConfigs/dots"
+    if [ -x "$repo/.githooks/pre-commit" ] \
+       && [ "$(${pkgs.git}/bin/git -C "$repo" config core.hooksPath)" != ".githooks" ]; then
+      run ${pkgs.git}/bin/git -C "$repo" config core.hooksPath .githooks
+    fi
+  '';
+
   # Nix is the source of truth, so Settings Sync must stay off: it needs a
   # GitHub sign-in and would upload the private settings. VS Code has no policy
   # for it, so flip the flag in its state database.
