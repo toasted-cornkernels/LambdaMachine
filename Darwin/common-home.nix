@@ -47,4 +47,12 @@
   };
 
   fonts = { fontconfig.enable = true; };
+
+  # MacVim's counterpart to Emacs spacious-padding (:internal-border-width 15).
+  targets.darwin.defaults."org.vim.MacVim" = {
+    MMTextInsetLeft = 15;
+    MMTextInsetRight = 15;
+    MMTextInsetTop = 15;
+    MMTextInsetBottom = 15;
+  };
 }
