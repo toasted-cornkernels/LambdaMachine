@@ -25,6 +25,21 @@ let
     sha256 = modelHashes.${cfg.model};
   };
 
+  # A small model listens to the last few seconds while dictating, for "stop /
+  # pause / resume dictation": ~0.3 s a check on the iMac's CPU with a 5 s
+  # audio context, and Silero VAD so silence and noise transcribe as nothing
+  # rather than as the phrases its prompt primes it with.
+  listenerModel = pkgs.fetchurl {
+    name = "ggml-small-q5_1.bin";
+    url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/${modelRev}/ggml-small-q5_1.bin";
+    sha256 = "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb";
+  };
+  vadModel = pkgs.fetchurl {
+    name = "ggml-silero-v5.1.2.bin";
+    url = "https://huggingface.co/ggml-org/whisper-vad/resolve/9ffd54a1e1ee413ddf265af9913beaf518d1639b/ggml-silero-v5.1.2.bin";
+    sha256 = "29940d98d42b91fbd05ce489f3ecf7c72f0a42f027e4875919a28fb4c04ea2cf";
+  };
+
   # Chosen by benchmark on the iMac (24 en/ko/ja requests): Qwen3-4B-2507
   # picked best (19/24, ~6 s on CPU); EmbeddingGemma ranks commands for it.
   llmModels = {
@@ -98,6 +113,17 @@ in
         "ko"
         "ja"
       ];
+    };
+    listener = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Listen for spoken stop / pause / resume while dictating.";
+      };
+      port = lib.mkOption {
+        type = lib.types.port;
+        default = 8181;
+      };
     };
     llm = {
       enable = lib.mkOption {
@@ -189,10 +215,45 @@ in
       };
     };
 
+    launchd.agents.whisper-listener = lib.mkIf cfg.listener.enable {
+      enable = true;
+      config = {
+        ProgramArguments = [
+          "${pkgs.whisper-cpp}/bin/whisper-server"
+          "--host"
+          "127.0.0.1"
+          "--port"
+          (toString cfg.listener.port)
+          "--model"
+          "${listenerModel}"
+          "--threads"
+          "4"
+          "--language"
+          "auto"
+          "--audio-ctx"
+          "256"
+          "--vad"
+          "--vad-model"
+          "${vadModel}"
+          "--public"
+          "/var/empty"
+        ]
+        ++ lib.optional (!cfg.useGpu) "--no-gpu";
+        RunAtLoad = true;
+        KeepAlive = true;
+        ProcessType = "Interactive";
+        StandardOutPath = "${logDir}/whisper-listener.log";
+        StandardErrorPath = "${logDir}/whisper-listener.log";
+      };
+    };
+
     xdg.configFile."voice/config.json".text = builtins.toJSON (
       {
         endpoint = "http://127.0.0.1:${toString cfg.port}/inference";
         inherit (cfg) languages model vocabulary;
+      }
+      // lib.optionalAttrs cfg.listener.enable {
+        listener = "http://127.0.0.1:${toString cfg.listener.port}/inference";
       }
       // lib.optionalAttrs cfg.llm.enable {
         llm = {
