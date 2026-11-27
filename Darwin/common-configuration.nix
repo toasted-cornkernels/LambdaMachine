@@ -4,6 +4,11 @@
   environment = {
     systemPackages = [ pkgs.home-manager ];
     systemPath = [ "$HOME/.cargo/bin" ];
+    # Nixpkgs' curl/OpenSSL ignore NIX_SSL_CERT_FILE and fall back to an
+    # nss-cacert CApath that fails to verify (curl error 60), breaking e.g.
+    # Elfeed. Point the standard OpenSSL variable at the bundle nix-darwin's
+    # security.pki writes (the same one NIX_SSL_CERT_FILE names).
+    variables.SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
   };
 
   nix = {
